@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_friend"
+        android:icon="@drawable/multiple_users_silhouette"
+        android:title="Friend" />
+
+    <item
+        android:id="@+id/navigation_heart"
+        android:icon="@drawable/heart"
+        android:title="Heart" />
+
+    <item
+        android:id="@+id/navigation_plant"
+        android:icon="@drawable/budding_leaves"
+        android:title="Plant" />
+
+    <item
+        android:id="@+id/navigation_music"
+        android:icon="@drawable/musical_note"
+        android:title="Music" />
+
+</menu>
