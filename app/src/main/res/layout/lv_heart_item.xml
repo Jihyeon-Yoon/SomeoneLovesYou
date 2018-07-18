@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="5"
+    >
+
+    <ImageView
+        android:id="@+id/iv_person"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:scaleType="fitXY"
+        android:layout_weight="1"
+        android:padding="3dp"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="4"
+        android:weightSum="2"
+        >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="정우성님이 당신을 생각하고 있어요"
+            android:textSize="16dp"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:lines="1"
+            android:ellipsize="end"
+            android:paddingLeft="5dp"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:weightSum="8"
+            >
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018.07.18"
+                android:textSize="14dp"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/tv_ampm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오전"
+                android:textSize="14dp"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03:00"
+                android:textSize="14dp"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                />
+
+            <ImageView
+                android:id="@+id/iv_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="5dp"
+                android:src="@drawable/like"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
