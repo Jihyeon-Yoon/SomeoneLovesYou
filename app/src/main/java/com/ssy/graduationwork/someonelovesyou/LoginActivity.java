@@ -1,16 +1,25 @@
 package com.ssy.graduationwork.someonelovesyou;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
     Button button_signup, button_login;
     EditText editText_phone, getEditText_phone_pw;
+    CheckBox chk_auto;
+    SharedPreferences setting;
+    SharedPreferences.Editor editor;
+    String loginId, loginPwd;
+
 
 
     @Override
@@ -22,6 +31,21 @@ public class LoginActivity extends AppCompatActivity {
         button_login = findViewById(R.id.button_login);
         editText_phone = findViewById(R.id.editText_phone);
         getEditText_phone_pw = findViewById(R.id.editText_pw);
+        chk_auto=findViewById(R.id.chk_auto);
+
+        setting=getSharedPreferences("setting",0);
+        editor=setting.edit();
+
+        if(setting.getBoolean("chk_auto",false)){
+            editText_phone.setText(setting.getString("ID",""));
+            getEditText_phone_pw.setText(setting.getString("PW", ""));
+            chk_auto.setChecked(true);
+            Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(MainIntent);
+
+        }
+
+
         button_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,24 +53,37 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(signUpIntent);
             }
         });
+
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String input_phone = editText_phone.getText().toString();
-                String input_pw = getEditText_phone_pw.getText().toString();
-                if (input_phone.equalsIgnoreCase("")) {
-                    // Toast.makeText(this,"d",Toast.LENGTH_SHORT).show();
-                    //  Toast.makeText(this, "폰번호 입력하세요", Toast.LENGTH_SHORT).show();
-                } else if (input_pw.equalsIgnoreCase("")) {
-                    //    Toast.makeText(this, "비밀번호 입력하세요", Toast.LENGTH_SHORT).show();
+                if(chk_auto.isChecked()){
+                    Toast.makeText(getApplicationContext(),"로그인",Toast.LENGTH_SHORT).show();
+                    String ID=editText_phone.getText().toString();
+                    String PW=getEditText_phone_pw.getText().toString();
+
+                    editor.putString("ID",ID);
+                    editor.putString("PW",PW);
+                    editor.putBoolean("chk_auto",true);
+                    editor.commit();
+                    Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(MainIntent);
+
+
+                }
+                else{
+                    editor.clear();
+                    editor.commit();
+                    Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(MainIntent);
                 }
 
-                Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(MainIntent);
             }
         });
-        // button_signup.setOnClickListener(this);
-        //  button_login.setOnClickListener(this);
+
+
+
+
 
     }
 

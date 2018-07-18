@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">SomeoneLovesYou</string>
-    //불필요
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="kakao_app_key">a5857c241e2a0b366aa7243b60938dac</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    //불필요
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
