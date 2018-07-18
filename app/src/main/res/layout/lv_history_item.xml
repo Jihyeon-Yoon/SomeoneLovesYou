@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="5"
+    >
+
+    <ImageView
+        android:id="@+id/iv_flower"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:scaleType="fitXY"
+        android:layout_weight="1"
+        android:padding="3dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_weight="4"
+        android:weightSum="6">
+
+            <TextView
+                android:id="@+id/tv_startDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="2018.01.13"
+                android:textSize="18dp"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                android:layout_weight="2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="~"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.3" />
+
+            <TextView
+                android:id="@+id/tv_endDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="2018.03.20"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:layout_weight="2" />
+
+            <ImageView
+                android:id="@+id/iv_record"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/scroll"
+                android:layout_weight="1.7" />
+
+    </LinearLayout>
+</LinearLayout>
+
