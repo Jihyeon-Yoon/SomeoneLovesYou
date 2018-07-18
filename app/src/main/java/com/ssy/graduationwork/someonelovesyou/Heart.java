@@ -57,7 +57,7 @@ public class Heart extends Fragment {
                 //이미지이름==폰번호
                 String personImgName = temp[0];
 
-                int personImgResId = getResources().getIdentifier(personImgName, "drawable", "com.mpyg.yjh.areyouready");
+                int personImgResId = getResources().getIdentifier(personImgName, "drawable", "com.ssy.graduationwork.someonelovesyou");
 
                 String name = temp[1]+"님이 당신을 생각하고 있어요";
                 String date = temp[2];
