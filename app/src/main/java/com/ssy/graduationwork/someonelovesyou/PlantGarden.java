@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
+
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -48,7 +50,7 @@ public class PlantGarden extends Fragment {
             @Override
             public void onClick(View v) {
                 heart_num++;
-                if((0<=heart_num)&&(heart_num<=5)){
+                    if((1<=heart_num)&&(heart_num<=5)){
                     imageView.setImageResource(R.drawable.plant1);
                     showData();
                 }else if((6<=heart_num)&&(heart_num<=10)){
@@ -57,10 +59,10 @@ public class PlantGarden extends Fragment {
                 }else if((11<=heart_num)&&(heart_num<=15)){
                     imageView.setImageResource(R.drawable.plant3);
                     showData();
-                }else if((16<=heart_num)&&(heart_num<=20)){
+                }else if((16<=heart_num)&&(heart_num<=19)){
                     imageView.setImageResource(R.drawable.plant4);
                     showData();
-                }else if((21<=heart_num)&&(heart_num<=25)){
+                }else if((20<=heart_num)){
                     imageView.setImageResource(R.drawable.plant5_2);
                     showData();
                 }
@@ -75,7 +77,7 @@ public class PlantGarden extends Fragment {
     }
     public void showData() {
         String temp;
-        temp=String.format("%d", heart_num*4);
+        temp=String.format("%d", heart_num*5);
         heartPercentView.setText(temp);
         temp=String.format("%d",heart_num);
         heartNumView.setText(temp);
