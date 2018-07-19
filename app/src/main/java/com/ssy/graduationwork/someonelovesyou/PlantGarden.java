@@ -36,7 +36,8 @@ public class PlantGarden extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView =  inflater.inflate(R.layout.fragment_plant_garden, container, false);
+        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_plant_garden, null);
+
 
         imageView=rootView.findViewById(R.id.imageView);
         heartBtn=rootView.findViewById(R.id.heart_btn);
