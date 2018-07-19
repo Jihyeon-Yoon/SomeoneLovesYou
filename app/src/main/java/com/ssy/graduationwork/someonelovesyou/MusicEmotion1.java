@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 /**
@@ -21,6 +24,7 @@ import java.util.ArrayList;
 
 public class MusicEmotion1 extends Fragment {
 
+    Button titleSortBtn, singerSortBtn;
     ListView listView;
     ListViewAdapterForMusic adapter;
 
@@ -72,6 +76,44 @@ public class MusicEmotion1 extends Fragment {
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+        // 제목순으로 정렬하는 버튼, 버튼을 누르면 제목순(가나다순))으로 정렬한다.
+        titleSortBtn = rootView.findViewById(R.id.btn_sort_title);
+        titleSortBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Comparator<ListViewItemForMusic> nameAsc = new Comparator<ListViewItemForMusic>() {
+                    @Override
+                    public int compare(ListViewItemForMusic item1, ListViewItemForMusic item2) {
+                        return item1.getTitle().compareTo(item2.getTitle());
+                    }
+                };
+
+                Collections.sort(itemList, nameAsc);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        // 가수순으로 정렬하는 버튼, 버튼을 누르면 가수순(가나다순))으로 정렬한다.
+        singerSortBtn = rootView.findViewById(R.id.btn_sort_singer);
+        singerSortBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Comparator<ListViewItemForMusic> nameAsc = new Comparator<ListViewItemForMusic>() {
+                    @Override
+                    public int compare(ListViewItemForMusic item1, ListViewItemForMusic item2) {
+                        return item1.getSinger().compareTo(item2.getSinger());
+                    }
+                };
+
+                Collections.sort(itemList, nameAsc);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+
+
+
 
         return rootView;
     }

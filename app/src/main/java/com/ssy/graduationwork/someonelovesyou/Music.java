@@ -69,17 +69,17 @@ public class Music extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch(position) {
                 case 0:
-                    return "E1";
+                    return "낙천";
                 case 1:
-                    return "E2";
+                    return "사랑";
                 case 2:
-                    return "E3";
+                    return "공포";
                 case 3:
-                    return "E4";
+                    return "반감";
                 case 4:
-                    return "E5";
+                    return "회한";
                 case 5:
-                    return "E6";
+                    return "분노";
                 default:
                     return "";
             }
