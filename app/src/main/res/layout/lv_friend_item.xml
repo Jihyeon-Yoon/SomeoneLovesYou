@@ -25,26 +25,54 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:weightSum="5"
+            android:weightSum="16"
+            android:orientation="horizontal"
             >
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="0dp"
+                android:layout_weight="7.5"
                 android:layout_height="wrap_content"
                 android:text="정우성"
                 android:textSize="16dp"
                 android:paddingLeft="5dp"
                 android:layout_gravity="center"
-                android:layout_weight="3" />
+                />
 
             <ImageView
-                android:id="@+id/iv_send"
+                android:id="@+id/iv_emoticon"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:paddingLeft="5dp"
+                android:src="@drawable/emoticon_silent"
+                />
+
+            <ImageView
+                android:id="@+id/iv_send_name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:src="@drawable/like"
-                android:layout_weight="2" />
+                />
+            <ImageView
+                android:id="@+id/iv_send_noname"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/like_noname"
+                />
+            <ImageView
+                android:id="@+id/iv_music"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/play_green"
+                />
+
         </LinearLayout>
 
         <TextView
@@ -52,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:text="바쁜 나날들..."
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:padding="5dp"
             android:layout_weight="1"
             android:lines="1"
