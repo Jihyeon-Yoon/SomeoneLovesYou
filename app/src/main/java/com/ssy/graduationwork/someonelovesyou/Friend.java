@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by YJH on 2018-07-17.
@@ -70,6 +72,16 @@ public class Friend extends Fragment {
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+
+        // 이름순으로 정렬 (default)
+        Comparator<ListViewItemForFriend> nameAsc = new Comparator<ListViewItemForFriend>() {
+            public int compare(ListViewItemForFriend item1, ListViewItemForFriend item2) {
+                return item1.getName().compareTo(item2.getName());
+            }
+        };
+        Collections.sort(itemList, nameAsc);
+        adapter.notifyDataSetChanged();
 
 
         return rootView;
