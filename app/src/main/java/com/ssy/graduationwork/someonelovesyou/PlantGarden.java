@@ -62,15 +62,15 @@ public class PlantGarden extends Fragment {
                 }else if((16<=heart_num)&&(heart_num<=19)){
                     imageView.setImageResource(R.drawable.plant4);
                     showData();
-                }else if((20<=heart_num)){
+                }else if((20==heart_num)){
                     imageView.setImageResource(R.drawable.plant5_2);
                     showData();
                 }
+                 if(heart_num>20){
+
+                    }
             }
         });
-
-
-
 
 
         return rootView;
