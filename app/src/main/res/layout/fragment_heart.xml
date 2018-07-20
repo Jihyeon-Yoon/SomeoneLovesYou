@@ -4,6 +4,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#8fc552"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearbuttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btn_sort_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간순"
+            android:textColor="#fcfcfc"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:drawableLeft="@drawable/triangle"
+            android:backgroundTint="#3c3f41"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/btn_sort_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름순"
+            android:textColor="#fcfcfc"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:drawableLeft="@drawable/triangle"
+            android:backgroundTint="#3c3f41"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/listView"
