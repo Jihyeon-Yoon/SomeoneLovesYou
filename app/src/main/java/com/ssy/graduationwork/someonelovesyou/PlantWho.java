@@ -96,7 +96,6 @@ public class PlantWho extends Fragment {
                         String time1 = "";
                         String time2 = "";
                         String temp = "";
-                        int ret, intTime1, intTime2;
 
                         //time1 얻기
                         temp = item1.getDate();
@@ -104,7 +103,7 @@ public class PlantWho extends Fragment {
 
                         if(item1.getAMPM().equals("오후")) {
                             String strBuffer="";
-                            int intBuffer;
+                            int intBuffer=0;
 
                             temp = item1.getTime();
                             strBuffer = temp.substring(0, 2) + temp.substring(3);
@@ -126,14 +125,14 @@ public class PlantWho extends Fragment {
 
                         if(item2.getAMPM().equals("오후")) {
                             String strBuffer="";
-                            int intBuffer;
+                            int intBuffer=0;
 
                             temp = item2.getTime();
                             strBuffer = temp.substring(0, 2) + temp.substring(3);
                             intBuffer = Integer.parseInt(strBuffer);
                             intBuffer += 1200;
                             strBuffer = String.valueOf(intBuffer);
-                            time1 += strBuffer;
+                            time2 += strBuffer;
 
                         } else {
                             temp = item2.getTime();
@@ -141,30 +140,12 @@ public class PlantWho extends Fragment {
                         }
 
                         return time1.compareTo(time2);
-
-                        /*
-                        intTime1 = Integer.parseInt(time1);
-                        intTime2 = Integer.parseInt(time2);
-
-                        if(intTime1 < intTime2) {
-                            ret = 1;
-                        } else if (intTime1 == intTime2) {
-                            ret = 0;
-                        } else {
-                            ret = -1;
-                        }
-
-                        return ret;
-                        */
                     }
                 };
-
                 Collections.sort(itemList, timeAsc);
                 adapter.notifyDataSetChanged();
             }
         });
-
-
 
         // 이름순으로 정렬하는 버튼, 버튼을 누르면 이름순(가나다순))으로 정렬한다.
         nameSortBtn = rootView.findViewById(R.id.btn_sort_name);
@@ -182,7 +163,6 @@ public class PlantWho extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
-
 
         return rootView;
     }
