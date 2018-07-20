@@ -41,45 +41,75 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:weightSum="8"
+            android:weightSum="16"
+            android:orientation="horizontal"
             >
             <TextView
                 android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="4"
                 android:layout_height="wrap_content"
                 android:text="2018.07.18"
-                android:textSize="14dp"
+                android:textSize="13dp"
                 android:paddingLeft="5dp"
                 android:layout_gravity="center"
                 />
 
             <TextView
                 android:id="@+id/tv_ampm"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
                 android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
                 android:text="오전"
-                android:textSize="14dp"
-                android:paddingLeft="5dp"
+                android:textSize="13dp"
+
                 android:layout_gravity="center"
                 />
 
             <TextView
                 android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:text="03:00"
-                android:textSize="14dp"
-                android:paddingLeft="5dp"
+                android:textSize="13dp"
+
                 android:layout_gravity="center"
                 />
 
             <ImageView
-                android:id="@+id/iv_send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/iv_emoticon"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:paddingLeft="5dp"
+                android:src="@drawable/emoticon_silent"
+                />
+
+            <ImageView
+                android:id="@+id/iv_send_name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:src="@drawable/like"
+                />
+            <ImageView
+                android:id="@+id/iv_send_noname"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/like_noname"
+                />
+            <ImageView
+                android:id="@+id/iv_music"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/play_green"
                 />
 
         </LinearLayout>
