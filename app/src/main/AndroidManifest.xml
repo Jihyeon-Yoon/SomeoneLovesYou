@@ -30,7 +30,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".getDial" />
-        <activity android:name=".Modify_Information"></activity>
+        <activity android:name=".Modify_Information" />
+        <activity android:name=".CopyrightActivity"></activity>
     </application>
 
 </manifest>
