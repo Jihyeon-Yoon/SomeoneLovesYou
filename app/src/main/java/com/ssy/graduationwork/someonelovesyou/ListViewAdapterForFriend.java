@@ -34,6 +34,8 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         return listViewItemList.size();
     }
 
+
+
     // position에 위치한 데이터를 화면에 출력하는 데 사용될 view를 리턴. : 필수 구현
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
