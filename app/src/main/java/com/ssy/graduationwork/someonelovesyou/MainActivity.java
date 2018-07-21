@@ -2,6 +2,7 @@ package com.ssy.graduationwork.someonelovesyou;
 
 import android.Manifest;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -92,6 +94,32 @@ public class MainActivity extends AppCompatActivity
         }
 
         return loadFragment(fragment);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int curId = item.getItemId();
+        Intent intent = null;
+
+        switch(curId) {
+            case R.id.modify_menu:
+                intent = new Intent (getApplicationContext(),  Modify_Information.class);
+                break;
+            case R.id.menu_copyright:
+               // intent = new Intent (getApplicationContext(), CopyrightActivity.class);
+                break;
+            default:
+                break;
+        }
+
+        startActivity(intent);
+        return super.onOptionsItemSelected(item);
     }
 
 

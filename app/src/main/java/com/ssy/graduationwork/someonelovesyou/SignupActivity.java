@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,6 +26,11 @@ public class SignupActivity extends AppCompatActivity {
 
     final int REQ_CODE_SELECT_IMAGE=100;
     ImageButton btn;
+    Button createBtn, EmailCheckBtn;
+    ImageView profileImgageview;
+    EditText pw, checkPw, EmailText,statusText;
+    String Spw, ScheckPw,status;
+    int emailBit=0;
     @Override
 
     protected void onCreate(Bundle savedInstanceState){
@@ -39,6 +46,26 @@ public class SignupActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 100);}
 
         btn=findViewById(R.id.Btn_Find);
+        pw=findViewById(R.id.editText_newPW);
+        checkPw=findViewById(R.id.editText_checkPW);
+        EmailText=findViewById(R.id.editText_email);
+        EmailCheckBtn=findViewById(R.id.emailCheckBtn);
+        statusText=findViewById(R.id.editText_status);
+        createBtn=findViewById(R.id.button_createAccount);
+        BitmapDrawable d = (BitmapDrawable)((ImageView) findViewById(R.id.SelectedImage)).getDrawable();
+        Bitmap b = d.getBitmap();
+
+        //이메일 중복 확인...emailBit값을 0으로 초기화 해두었는데 중복이 아니라면 1로 바꿔준다.
+        EmailCheckBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //중복인경우
+                //아닌경우  ->bit=1;
+            }
+        });
+
+
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +76,37 @@ public class SignupActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQ_CODE_SELECT_IMAGE);
             }
         });
+
+        createBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Spw=pw.getText().toString();
+                ScheckPw=checkPw.getText().toString();
+                statusText.getText().toString();
+                if(emailBit==0){
+                    Toast.makeText(getApplicationContext(),"이메일 중복 확인해주세요",Toast.LENGTH_SHORT).show();
+                }
+                else if(Spw.compareTo(ScheckPw)!=0){
+                    Toast.makeText(getApplicationContext(),"비밀번호가 다릅니다",Toast.LENGTH_SHORT).show();
+                    pw.setText("");
+                    checkPw.setText("");
+                }
+                else if((Spw.compareTo(ScheckPw)==0) && (emailBit==1)){
+                    //update
+                    //비트맵 b, Spw, email, satus 업데이트
+                }
+
+
+            }
+        });
+
+
+
     }
+
+
+
+
 
 
     @Override

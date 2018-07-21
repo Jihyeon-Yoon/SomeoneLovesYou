@@ -15,6 +15,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:src="@drawable/profile"
                 android:id="@+id/SelectedImage"
                 android:layout_width="236dp"
                 android:layout_height="match_parent"
@@ -35,11 +36,12 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -48,21 +50,22 @@
 
             <EditText
                 android:id="@+id/editText_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="이름"
+                android:hint="이름을 입력해주세요"
                 />
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -70,46 +73,80 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <EditText
-                android:id="@+id/editText_newPhone"
-                android:layout_width="wrap_content"
+                android:id="@+id/editText_phone"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="'-'빼고 입력하세요."
-                android:inputType="phone" />
+                android:hint="전화번호를 입력해주세요"
+                />
         </LinearLayout>
 
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="이메일"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <EditText
                 android:id="@+id/editText_email"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="e-mail"
+                android:hint="이메일을 입력해주세요"
+                />
+            <Button
+                android:id="@+id/emailCheckBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="중복확인"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="상태메시지"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <EditText
+                android:id="@+id/editText_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="상태메시지를 입력해주세요"
                 />
         </LinearLayout>
 
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -118,7 +155,7 @@
 
             <EditText
                 android:id="@+id/editText_newPW"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -127,9 +164,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="110dp"
@@ -140,7 +177,7 @@
 
             <EditText
                 android:id="@+id/editText_checkPW"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -150,10 +187,11 @@
 
 
         <Button
+            android:layout_marginLeft="150dp"
             android:id="@+id/button_createAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="30dp"
             android:text="확인" />
 
     </LinearLayout>
