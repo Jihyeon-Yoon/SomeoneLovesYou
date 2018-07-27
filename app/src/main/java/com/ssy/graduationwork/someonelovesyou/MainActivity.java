@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity
                 intent = new Intent (getApplicationContext(),  Modify_Information.class);
                 break;
             case R.id.menu_copyright:
-               // intent = new Intent (getApplicationContext(), CopyrightActivity.class);
+                intent = new Intent (getApplicationContext(), CopyrightActivity.class);
                 break;
             default:
                 break;
