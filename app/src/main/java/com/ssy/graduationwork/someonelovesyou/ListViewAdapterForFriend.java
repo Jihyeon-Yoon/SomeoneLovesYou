@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,15 +20,20 @@ public class ListViewAdapterForFriend extends BaseAdapter {
     // Adapter에 추가한 데이터를 저장하기 위한 ArrayList
     private ArrayList<ListViewItemForFriend> listViewItemList;
 
+
+
     // ListViewAdatper의 생성자
     public ListViewAdapterForFriend(ArrayList<ListViewItemForFriend> itemList) {
         if(itemList == null) {
             listViewItemList = new ArrayList<ListViewItemForFriend>();
+
         }
         else {
             listViewItemList = itemList;
         }
     }
+
+
 
     // Adapter에 사용되는 데이터의 개수를 리턴 : 필수 구현
     public int getCount() {
@@ -52,6 +58,7 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         ImageView personImageView = convertView.findViewById(R.id.iv_person);
         TextView nameTextView = convertView.findViewById(R.id.tv_name);
         TextView stateTextView = convertView.findViewById(R.id.tv_state);
+        //listItem=convertView.findViewById(R.id.listView);
 
 
         // Data set(listViewItemList)에서 position에 위치한 데이터 참조 획득
@@ -61,6 +68,7 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         personImageView.setImageResource(listViewItem.getPersonImgResId());
         nameTextView.setText(listViewItem.getName());
         stateTextView.setText(listViewItem.getState());
+
 
         return convertView;
     }
@@ -86,8 +94,14 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         item.setName(name);
         item.setState(state);
 
+
         listViewItemList.add(item);
     }
+
+
+
+
+
 
 
 

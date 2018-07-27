@@ -40,21 +40,28 @@
                 />
 
             <ImageView
+
                 android:id="@+id/iv_emoticon"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:src="@drawable/emoticon_silent"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
                 />
 
             <ImageView
+
                 android:id="@+id/iv_send_name"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:src="@drawable/like"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+
                 />
             <ImageView
                 android:id="@+id/iv_send_noname"
@@ -63,6 +70,8 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:src="@drawable/like_noname"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
                 />
             <ImageView
                 android:id="@+id/iv_music"
@@ -71,6 +80,8 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:src="@drawable/play_green"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
                 />
 
         </LinearLayout>

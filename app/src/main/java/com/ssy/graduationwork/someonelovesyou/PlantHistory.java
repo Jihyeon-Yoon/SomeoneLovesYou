@@ -1,11 +1,13 @@
 package com.ssy.graduationwork.someonelovesyou;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -75,6 +77,21 @@ public class PlantHistory extends Fragment {
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(getContext().getApplicationContext(),HistoryClicked.class);
+                intent.putExtra("startDate",itemList.get(position).getStartDate());
+                intent.putExtra("endDate",itemList.get(position).getEndDate());
+               // String temp=itemList.get(position).getName();
+                //String fixprof_name=temp.substring(0,temp.indexOf("님"));
+                //intent.putExtra("name",fixprof_name);
+               // intent.putExtra("phone",itemList.get(position).getPersonImgResId());
+                startActivity(intent);
+
+            }
+        });
 
 
         return rootView;

@@ -1,5 +1,6 @@
 package com.ssy.graduationwork.someonelovesyou;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -7,8 +8,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,26 +22,24 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * Created by YJH on 2018-07-17.
  */
 
 public class Friend extends Fragment {
-    ArrayList<ListViewItemForFriend>  list;
-    private List<String> listTitle;//새거
+
     ListView listView;
     ListViewAdapterForFriend adapter;
-    private ArrayList<String> arraylistTitle;
 
     ArrayList<ListViewItemForFriend> itemList;
-    ArrayList<ListViewItemForFriend> itemList2;
-     EditText editSearch;        // 검색어를 입력할 Input 창
+    ArrayList<ListViewItemForFriend>  arraylist;
+    EditText search;
+
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
@@ -47,19 +50,17 @@ public class Friend extends Fragment {
 
         //Adapter 생성
         adapter = new ListViewAdapterForFriend(itemList);
+        search=rootView.findViewById(R.id.editSearch);
 
-        itemList2 = new ArrayList<ListViewItemForFriend>();
-        itemList2.addAll(itemList);
-
-        list=new ArrayList<ListViewItemForFriend>();
 
 
         // 리스트뷰 참조 및 adpater 달기
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(adapter);
+        listView.setFocusable(false);
 
-        //새로만듦
-        editSearch=rootView.findViewById(R.id.editSearch);
+
+
 
         try {
             InputStream is  = getResources().openRawResource(R.raw.friend);
@@ -89,16 +90,6 @@ public class Friend extends Fragment {
         } catch(IOException e) {
             e.printStackTrace();
         }
-
-        listTitle = new ArrayList<String>();
-        settingSearchList();
-
-
-        arraylistTitle = new ArrayList<String>();
-        arraylistTitle.addAll(listTitle);
-
-
-        // 이름순으로 정렬 (default)
         Comparator<ListViewItemForFriend> nameAsc = new Comparator<ListViewItemForFriend>() {
             public int compare(ListViewItemForFriend item1, ListViewItemForFriend item2) {
                 return item1.getName().compareTo(item2.getName());
@@ -107,11 +98,26 @@ public class Friend extends Fragment {
         Collections.sort(itemList, nameAsc);
         adapter.notifyDataSetChanged();
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(getContext().getApplicationContext(),FriendClicked.class);
+                intent.putExtra("profile",Integer.toString(itemList.get(position).getPersonImgResId()));
+                intent.putExtra("name",itemList.get(position).getName());
+                intent.putExtra("phone",itemList.get(position).getPersonImgResId());
+                startActivity(intent);
+
+            }
+        });
+
+        arraylist = new ArrayList<ListViewItemForFriend>();
+        arraylist.addAll(itemList);
 
 
 
-        //새로만듦
-        editSearch.addTextChangedListener(new TextWatcher() {
+
+
+        search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -124,45 +130,42 @@ public class Friend extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String text=editSearch.getText().toString();
-                search(text);
+                String searchText=search.getText().toString();
+                search(searchText);
 
             }
         });
 
-
-
         return rootView;
     }
 
-    private void settingSearchList(){
-        for(int i=0; i<itemList.size(); i++){
-            //list.add(itemList.get(i).getName()+ " / " + itemList.get(i).getState());
-            listTitle.add(itemList.get(i).getName());
-        }
+    @Override
+    public void onPause() {
+        super.onPause();
+        search.clearFocus();
     }
 
-    // 검색을 수행하는 메소드
     public void search(String charText) {
 
         // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
-           list.clear();
+        itemList.clear();
 
         // 문자 입력이 없을때는 모든 데이터를 보여준다.
         if (charText.length() == 0) {
-            list.addAll(itemList2);
+            itemList.addAll(arraylist);
         }
         // 문자 입력을 할때..
         else
         {
             // 리스트의 모든 데이터를 검색한다.
-            for(int i = 0;i < itemList2.size(); i++)
+            for(int i = 0;i < arraylist.size(); i++)
             {
-// arraylist의 모든 데이터에 입력받은 단어(charText)가 포함되어 있으면 true를 반환한다.
-                if (itemList2.get(i).getName().toLowerCase().contains(charText))
+                // arraylist의 모든 데이터에 입력받은 단어(charText)가 포함되어 있으면 true를 반환한다.
+                if (arraylist.get(i).getName().toLowerCase().contains(charText))
                 {
-// 검색된 데이터를 리스트에 추가한다.
-                    list.add(itemList2.get(i));
+                    // 검색된 데이터를 리스트에 추가한다.
+                    itemList.add(arraylist.get(i));
+
                 }
             }
         }
@@ -172,4 +175,11 @@ public class Friend extends Fragment {
 
 
 
+
+
+
+
+
 }
+
+

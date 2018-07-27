@@ -1,11 +1,17 @@
 package com.ssy.graduationwork.someonelovesyou;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -26,7 +32,11 @@ public class Heart extends Fragment {
     ListView listView;
     ListViewAdapterForHeart adapter;
 
+
     ArrayList<ListViewItemForHeart> itemList;
+
+    ArrayList<ListViewItemForHeart>  arraylist;
+    EditText search;
 
 
     @Override
@@ -45,6 +55,8 @@ public class Heart extends Fragment {
         // 리스트뷰 참조 및 adpater 달기
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(adapter);
+        search=rootView.findViewById(R.id.editSearch2);
+
 
         try {
             InputStream is  = getResources().openRawResource(R.raw.heart);
@@ -76,6 +88,21 @@ public class Heart extends Fragment {
         } catch(IOException e) {
             e.printStackTrace();
         }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(getContext().getApplicationContext(),FriendClicked.class);
+                intent.putExtra("profile",Integer.toString(itemList.get(position).getPersonImgResId()));
+                String temp=itemList.get(position).getName();
+                String fixprof_name=temp.substring(0,temp.indexOf("님"));
+                intent.putExtra("name",fixprof_name);
+                intent.putExtra("phone",itemList.get(position).getPersonImgResId());
+                startActivity(intent);
+
+            }
+        });
+        arraylist = new ArrayList<ListViewItemForHeart> ();
+        arraylist.addAll(itemList);
 
 
         // 시간순으로 정렬하는 버튼, 버튼을 누르면 시간순으로 정렬한다.
@@ -158,7 +185,68 @@ public class Heart extends Fragment {
         });
 
 
+
+
+
+
+
+        search.addTextChangedListener(new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            String searchText=search.getText().toString();
+            search(searchText);
+
+        }
+    });
+
+
+
         return rootView;
+}
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        search.clearFocus();
     }
+
+    public void search(String charText) {
+
+        // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
+        itemList.clear();
+
+        // 문자 입력이 없을때는 모든 데이터를 보여준다.
+        if (charText.length() == 0) {
+            itemList.addAll(arraylist);
+        }
+        // 문자 입력을 할때..
+        else
+        {
+            // 리스트의 모든 데이터를 검색한다.
+            for(int i = 0;i < arraylist.size(); i++)
+
+            {
+
+                if (arraylist.get(i).getName().toLowerCase().substring(0,3).contains(charText))
+                {
+                    // 검색된 데이터를 리스트에 추가한다.
+                    itemList.add(arraylist.get(i));
+                }
+            }
+        }
+        // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
+        adapter.notifyDataSetChanged();
+    }
+
 
 }
