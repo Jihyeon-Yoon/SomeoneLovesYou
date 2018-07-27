@@ -27,6 +27,7 @@
         </LinearLayout>
 
             <ImageButton
+                android:background="@android:color/transparent"
             android:layout_gravity="right"
             android:id="@+id/Btn_Find"
             android:layout_width="64dp"
@@ -64,28 +65,54 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="전화번호"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <EditText
-                android:id="@+id/editText_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="전화번호를 입력해주세요"
-                />
+
+
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="전화번호"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+
+
+
+
+
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editText_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="전화번호를 입력해주세요"
+                    />
+
+                <Button
+                    android:id="@+id/IDCheckBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="중복 확인"/>
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:textStyle="bold"
@@ -111,7 +138,7 @@
                 android:id="@+id/emailCheckBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="중복확인"/>
+                android:text="인증"/>
             </LinearLayout>
         </LinearLayout>
 
