@@ -33,10 +33,10 @@ public class Friend extends Fragment {
     ListViewAdapterForFriend adapter;
 
     ArrayList<ListViewItemForFriend> itemList;
+    //itemList를 복사할 List 선언
     ArrayList<ListViewItemForFriend>  arraylist;
+    //검색창
     EditText search;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
