@@ -31,9 +31,13 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".getDial" />
         <activity android:name=".Modify_Information" />
+<<<<<<< HEAD
         <activity android:name=".FriendClicked"/>
         <activity android:name=".HistoryClicked"/>
 
+=======
+        <activity android:name=".CopyrightActivity"></activity>
+>>>>>>> fdcb75fdb78bf61eceaf358a02f2dd4b5171cda8
     </application>
 
 </manifest>
