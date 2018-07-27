@@ -73,7 +73,7 @@
                 android:scaleType="fitStart"
                 android:background="@android:color/transparent"
                 />
-            <ImageeView
+            <ImageView
                 android:id="@+id/iv_music"
                 android:layout_width="0dp"
                 android:layout_weight="2"
