@@ -22,15 +22,11 @@ public class LoginActivity extends AppCompatActivity {
     String loginId, loginPwd;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // 타이틀바 가운데 정렬
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar_layout);
 
         button_signup = findViewById(R.id.button_signup);
         button_login = findViewById(R.id.button_login);
@@ -87,11 +83,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
-
 
 
 }

@@ -1,72 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="#3c3f41">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SOMEONE"
+        android:gravity="center"
+        android:textColor="#8fc552"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="60dp"
+        />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="2dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="2dp">
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:paddingRight="5dp"
-            android:text="전화번호"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-        <EditText
-            android:id="@+id/editText_phone"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="'-'빼고 입력하세요."
-            android:inputType="phone" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="2dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="2dp">
-
-        <TextView
-            android:id="@+id/textView_pw"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:text="비밀번호"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:paddingTop="2dp">
 
-        <EditText
-            android:id="@+id/editText_pw"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="전화번호"
+                android:textColor="#ffffff"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <EditText
+                android:id="@+id/editText_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="'-'빼고 입력하세요."
+                android:textColorHint="#ffffff"
+                android:inputType="phone"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:id="@+id/textView_pw"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:text="비밀번호"
+                android:textColor="#ffffff"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <EditText
+                android:id="@+id/editText_pw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:textColorHint="#ffffff"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/chk_auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="자동 로그인"
+                android:textColor="#ffffff"/>
+
+            <Button
+                android:id="@+id/button_findPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00ff0000"
+                android:text="비밀번호 찾기"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="30dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-    <CheckBox
-        android:id="@+id/chk_auto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="자동 로그인"/>
-
 
     <LinearLayout
     android:layout_width="match_parent"
@@ -76,15 +116,12 @@
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:textColor="#fcfcfc"
+        android:textStyle="bold"
+        android:backgroundTint="#2b2b2b"
         android:text="로그인"/>
-    <Button
-        android:id="@+id/button_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="회원가입"/>
-
 
 </LinearLayout>
 
@@ -92,8 +129,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="130dp">
 
+        <Button
+            android:id="@+id/button_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00ff0000"
+            android:text="SOMEONE 가입"
+            android:textColor="#8fc552"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
