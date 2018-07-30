@@ -5,9 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,6 +49,7 @@ public class ListViewAdapterForFriend extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
+        final String UserName;
         final Context context = parent.getContext();
 
         // listview_item layout을 inflate하여 convertView 참조 획득
@@ -54,11 +58,26 @@ public class ListViewAdapterForFriend extends BaseAdapter {
             convertView = inflater.inflate(R.layout.lv_friend_item, parent, false);
         }
 
+
         // 화면에 표시될 View(layout이 inflate됨)로 부터 위젯에 대한 참조 획득
         ImageView personImageView = convertView.findViewById(R.id.iv_person);
         TextView nameTextView = convertView.findViewById(R.id.tv_name);
         TextView stateTextView = convertView.findViewById(R.id.tv_state);
         //listItem=convertView.findViewById(R.id.listView);
+        ImageButton emoticon, send_name, no_nameBtn, send_music;
+
+        emoticon=convertView.findViewById(R.id.iv_emoticon);
+        send_name=convertView.findViewById(R.id.iv_send_name);
+        no_nameBtn=convertView.findViewById(R.id.iv_send_noname);
+        send_music=convertView.findViewById(R.id.iv_music);
+
+        emoticon.setFocusable(false);
+        send_name.setFocusable(false);
+        no_nameBtn.setFocusable(false);
+        send_music.setFocusable(false);
+
+        UserName=nameTextView.getText().toString();
+
 
 
         // Data set(listViewItemList)에서 position에 위치한 데이터 참조 획득
@@ -68,6 +87,38 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         personImageView.setImageResource(listViewItem.getPersonImgResId());
         nameTextView.setText(listViewItem.getName());
         stateTextView.setText(listViewItem.getState());
+
+        emoticon.setFocusable(false);
+        send_name.setFocusable(false);
+        no_nameBtn.setFocusable(false);
+        send_music.setFocusable(false);
+
+        emoticon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,UserName+" 님께 감정 전송 되었습니다",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        send_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context.getApplicationContext(),UserName+" 님께 감정 전송 되었습니다",Toast.LENGTH_LONG).show();
+            }
+        });
+        no_nameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context.getApplicationContext(),UserName+" 님께 감정이 익명으로 전송 되었습니다",Toast.LENGTH_LONG).show();
+            }
+        });
+        send_music.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context.getApplicationContext(),UserName+" 님께 음악을 추천해주세요",Toast.LENGTH_LONG).show();
+            }
+        });
+
 
 
         return convertView;
@@ -97,6 +148,7 @@ public class ListViewAdapterForFriend extends BaseAdapter {
 
         listViewItemList.add(item);
     }
+
 
 
 

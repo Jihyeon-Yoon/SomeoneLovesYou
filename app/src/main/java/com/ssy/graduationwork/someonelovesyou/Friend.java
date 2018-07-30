@@ -109,6 +109,7 @@ public class Friend extends Fragment {
 
             }
         });
+        listView.setFocusable(false);
 
         arraylist = new ArrayList<ListViewItemForFriend>();
         arraylist.addAll(itemList);
