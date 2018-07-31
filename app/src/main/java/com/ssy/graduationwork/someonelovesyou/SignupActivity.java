@@ -39,6 +39,14 @@ public class SignupActivity extends AppCompatActivity {
 
         //권한부여
         setContentView(R.layout.activity_signup);
+
+
+        //타이틀바 없애려면 삭제해야함. manifest랑 충돌해서.
+        /*// 타이틀바 가운데 정렬
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_layout);*/
+
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         }

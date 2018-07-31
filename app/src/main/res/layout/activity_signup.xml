@@ -1,225 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="match_parent"
+    android:background="#3c3f41">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
-
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:orientation="horizontal">
+            android:layout_height="130dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:weightSum="4">
 
             <ImageView
-                android:src="@drawable/profile"
+                android:src="@drawable/users"
                 android:id="@+id/SelectedImage"
-                android:layout_width="236dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginLeft="70dp" />
-
-
-
-        </LinearLayout>
+                android:layout_weight="3"
+                android:paddingLeft="40dp" />
 
             <ImageButton
                 android:background="@android:color/transparent"
-            android:layout_gravity="right"
-            android:id="@+id/Btn_Find"
-            android:layout_width="64dp"
-            android:layout_height="60dp"
-            android:src="@drawable/camera"
-            android:text="갤러리" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="이름"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/editText_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="이름을 입력해주세요"
-                />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-
-
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="전화번호"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-
-
-
-
-
-
-
+                android:layout_gravity="bottom"
+                android:id="@+id/Btn_Find"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/photo_camera"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp">
+
+                <EditText
+                    android:id="@+id/editText_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint="이름"
+                    android:textColorHint="#ffffff"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp">
 
                 <EditText
                     android:id="@+id/editText_phone"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="전화번호를 입력해주세요"
+                    android:ems="11"
+                    android:hint="핸드폰 번호 ('-' 빼고 입력)"
+                    android:textColorHint="#ffffff"
+                    android:inputType="phone"
                     />
 
                 <Button
                     android:id="@+id/IDCheckBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="중복 확인"/>
+                    android:text="중복확인"
+                    android:textColor="#fcfcfc"
+                    android:textStyle="bold"
+                    android:backgroundTint="#2b2b2b"/>
+
+
 
             </LinearLayout>
 
 
-
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="이메일"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <EditText
-                android:id="@+id/editText_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="이메일을 입력해주세요"
-                />
-            <Button
-                android:id="@+id/emailCheckBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="인증"/>
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp">
+
+                <EditText
+                    android:id="@+id/editText_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="11"
+                    android:hint="이메일"
+                    android:textColorHint="#ffffff"
+                    android:inputType="textEmailAddress"
+                    />
+
+                <Button
+                    android:id="@+id/emailCheckBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="인증"
+                    android:textColor="#fcfcfc"
+                    android:textStyle="bold"
+                    android:backgroundTint="#2b2b2b"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp">
+
+                <EditText
+                    android:id="@+id/editText_newPW"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint="비밀번호 (5~10자 이내)"
+                    android:textColorHint="#ffffff"
+                    android:inputType="textPassword" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp">
+
+                <EditText
+                    android:id="@+id/editText_checkPW"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint="비밀번호 확인"
+                    android:textColorHint="#ffffff"
+                    android:inputType="textPassword"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp">
+
+                <EditText
+                    android:id="@+id/editText_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint="상태메시지"
+                    android:textColorHint="#ffffff"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="상태메시지"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/editText_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="상태메시지를 입력해주세요"
-                />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="비밀번호"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/editText_newPW"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="비밀번호 확인"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            <EditText
-                android:id="@+id/editText_checkPW"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword" />
-        </LinearLayout>
 
 
         <Button
-            android:layout_marginLeft="150dp"
             android:id="@+id/button_createAccount"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="확인" />
+            android:text="가입하기"
+            android:textColor="#2b2b2b"
+            android:textStyle="bold"
+            android:backgroundTint="#8fc552"
+            android:layout_gravity="center" />
 
     </LinearLayout>
 
