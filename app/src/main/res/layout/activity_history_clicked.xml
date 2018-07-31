@@ -5,28 +5,53 @@
     android:orientation="vertical">
 
     <TextView
-
         android:id="@+id/date_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
         android:textColor="#8fc552"
-        />
+        android:gravity="center" />
 
+    <LinearLayout
+        android:id="@+id/linearbuttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btn_sort_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간순"
+            android:textColor="#fcfcfc"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:drawableLeft="@drawable/triangle"
+            android:backgroundTint="#3c3f41"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/btn_sort_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름순"
+            android:textColor="#fcfcfc"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:drawableLeft="@drawable/triangle"
+            android:backgroundTint="#3c3f41"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/editSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="검색어를 입력하세요."/>
-
-
-
-
-
 
     <ListView
         android:descendantFocusability="blocksDescendants"
