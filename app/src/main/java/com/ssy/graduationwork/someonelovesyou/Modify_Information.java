@@ -1,6 +1,7 @@
 package com.ssy.graduationwork.someonelovesyou;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -40,17 +41,23 @@ public class Modify_Information extends AppCompatActivity {
 
         //권한부여
         setContentView(R.layout.activity_modify__information);
+
+        // 타이틀바 가운데 정렬
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_layout);
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 100);}
 
-            pw=findViewById(R.id.editText_newPW2);
-            checkPw=findViewById(R.id.editText_checkPW2);
-            EmailText=findViewById(R.id.editText_email2);
-            EmailCheckBtn=findViewById(R.id.emailCheckBtn2);
-            statusText=findViewById(R.id.editText_status2);
+
+            EmailText=findViewById(R.id.editText_email);
+            EmailCheckBtn=findViewById(R.id.emailCheckBtn);
+            pw=findViewById(R.id.editText_newPW);
+            checkPw=findViewById(R.id.editText_checkPW);
+            statusText=findViewById(R.id.editText_status);
             modifyBtn=findViewById(R.id.button_modifyAccount);
             btn=findViewById(R.id.Btn_Find);
            //profileImgageview=findViewById(R.id.SelectedImage);
@@ -58,10 +65,6 @@ public class Modify_Information extends AppCompatActivity {
        BitmapDrawable d = (BitmapDrawable)((ImageView) findViewById(R.id.SelectedImage)).getDrawable();
 
         Bitmap b = d.getBitmap();
-
-
-
-
 
 
             //이메일 중복 확인...emailBit값을 0으로 초기화 해두었는데 중복이 아니라면 1로 바꿔준다.
@@ -72,8 +75,6 @@ public class Modify_Information extends AppCompatActivity {
                     //아닌경우  ->bit=1;
                 }
             });
-
-
 
             modifyBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -97,17 +98,6 @@ public class Modify_Information extends AppCompatActivity {
 
                 }
             });
-
-
-
-
-
-
-
-
-
-
-
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
