@@ -129,7 +129,7 @@ public class Friend extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-              
+
                 String searchText=search.getText().toString();
                 search(searchText);
 
