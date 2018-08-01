@@ -75,7 +75,7 @@ public class HistoryClicked extends AppCompatActivity {
         // 리스트뷰 참조 및 adpater 달기
         listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
-        search=findViewById(R.id.editSearch3);
+        search=findViewById(R.id.editSearch);
 
         try {
             InputStream is  = getResources().openRawResource(R.raw.who);
@@ -195,7 +195,7 @@ public class HistoryClicked extends AppCompatActivity {
 
 
 
-        /*search.addTextChangedListener(new TextWatcher() {
+        search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -212,11 +212,10 @@ public class HistoryClicked extends AppCompatActivity {
                 search(searchText);
 
             }
-        });*/
-
+        });
     }
 
-    /*@Override
+
     public void onPause() {
         super.onPause();
         search.clearFocus();
@@ -248,7 +247,7 @@ public class HistoryClicked extends AppCompatActivity {
         }
         // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
         adapter.notifyDataSetChanged();
-    }*/
+    }
 
 
 }
