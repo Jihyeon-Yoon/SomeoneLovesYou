@@ -71,10 +71,10 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         no_nameBtn=convertView.findViewById(R.id.iv_send_noname);
         send_music=convertView.findViewById(R.id.iv_music);
 
-        emoticon.setFocusable(false);
+       /* emoticon.setFocusable(false);
         send_name.setFocusable(false);
         no_nameBtn.setFocusable(false);
-        send_music.setFocusable(false);
+        send_music.setFocusable(false);*/
 
 
 
@@ -88,10 +88,10 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         nameTextView.setText(listViewItem.getName());
         stateTextView.setText(listViewItem.getState());
 
-        emoticon.setFocusable(false);
+       /* emoticon.setFocusable(false);
         send_name.setFocusable(false);
         no_nameBtn.setFocusable(false);
-        send_music.setFocusable(false);
+        send_music.setFocusable(false);*/
 
         UserName=nameTextView.getText().toString();
 

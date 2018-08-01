@@ -1,5 +1,6 @@
 package com.ssy.graduationwork.someonelovesyou;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -51,13 +53,21 @@ public class Friend extends Fragment {
         //Adapter 생성
         adapter = new ListViewAdapterForFriend(itemList);
         search=rootView.findViewById(R.id.editSearch);
+        search.requestFocus();
+
+
+        InputMethodManager imm = (InputMethodManager)getContext().getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        imm.showSoftInput(search,InputMethodManager.SHOW_FORCED);
+
 
 
 
         // 리스트뷰 참조 및 adpater 달기
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(adapter);
-        listView.setFocusable(false);
+
+
 
 
 
@@ -105,6 +115,7 @@ public class Friend extends Fragment {
 
 
 
+
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -118,11 +129,14 @@ public class Friend extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+              
                 String searchText=search.getText().toString();
                 search(searchText);
 
+
             }
         });
+
 
         return rootView;
     }
@@ -131,6 +145,7 @@ public class Friend extends Fragment {
     public void onPause() {
         super.onPause();
         search.clearFocus();
+
     }
 
     public void search(String charText) {
