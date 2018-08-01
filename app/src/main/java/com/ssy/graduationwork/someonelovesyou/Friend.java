@@ -53,7 +53,7 @@ public class Friend extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_friend, null);
 
 
-        ib_emoticon = rootView.findViewById(R.id.ib_emoticon);
+        /*ib_emoticon = rootView.findViewById(R.id.ib_emoticon);
         ib_emoticon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +97,7 @@ public class Friend extends Fragment {
 
                 popup.show();//Popup Menu 보이기
             }
-        });
+        });*/
 
 
 
