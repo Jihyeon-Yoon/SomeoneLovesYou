@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/e1"
+        android:title="낙천"/>
+    <item
+        android:id="@+id/e2"
+        android:title="사랑"/>
+    <item
+        android:id="@+id/e3"
+        android:title="공포"/>
+    <item
+        android:id="@+id/e4"
+        android:title="반감"/>
+    <item
+        android:id="@+id/e5"
+        android:title="회한"/>
+    <item
+        android:id="@+id/e6"
+        android:title="분노"/>
+</menu>
