@@ -71,8 +71,9 @@ public class ListViewAdapterForHeart extends BaseAdapter {
         dateTextView.setText(listViewItem.getDate());
         ampmTextView.setText(listViewItem.getAMPM());
         timeTextView.setText(listViewItem.getTime());
+        nameTextView.append("님이 당신을 생각하고 있어요");
 
-         UserName=listViewItem.getName().toString().substring(0,3);
+         UserName=listViewItem.getName().toString();
 
         emoticon.setOnClickListener(new View.OnClickListener() {
             @Override

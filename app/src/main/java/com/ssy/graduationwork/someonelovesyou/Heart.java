@@ -75,7 +75,7 @@ public class Heart extends Fragment {
 
                 int personImgResId = getResources().getIdentifier(personImgName, "drawable", "com.ssy.graduationwork.someonelovesyou");
 
-                String name = temp[1] + "님이 당신을 생각하고 있어요";
+                String name = temp[1];
                 String date = temp[2];
                 String ampm = temp[3];
                 String time = temp[4];
