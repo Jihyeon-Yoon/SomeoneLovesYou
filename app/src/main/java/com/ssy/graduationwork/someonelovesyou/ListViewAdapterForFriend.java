@@ -76,7 +76,7 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         no_nameBtn.setFocusable(false);
         send_music.setFocusable(false);
 
-        UserName=nameTextView.getText().toString();
+
 
 
 
@@ -92,6 +92,8 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         send_name.setFocusable(false);
         no_nameBtn.setFocusable(false);
         send_music.setFocusable(false);
+
+        UserName=nameTextView.getText().toString();
 
         emoticon.setOnClickListener(new View.OnClickListener() {
             @Override
