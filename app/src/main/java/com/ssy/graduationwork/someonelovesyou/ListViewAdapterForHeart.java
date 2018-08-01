@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class ListViewAdapterForHeart extends BaseAdapter {
     // Adapter에 추가한 데이터를 저장하기 위한 ArrayList
     private ArrayList<ListViewItemForHeart> listViewItemList;
+
 
     // ListViewAdatper의 생성자
     public ListViewAdapterForHeart(ArrayList<ListViewItemForHeart> itemList) {
@@ -38,12 +41,19 @@ public class ListViewAdapterForHeart extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
         final Context context = parent.getContext();
+        final String UserName;
 
         // listview_item layout을 inflate하여 convertView 참조 획득
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.lv_heart_item, parent, false);
         }
+        ImageButton emoticon, send_name, no_nameBtn, send_music;
+
+        emoticon=convertView.findViewById(R.id.tv_emoticon);
+        send_name=convertView.findViewById(R.id.tv_send_name);
+        no_nameBtn=convertView.findViewById(R.id.tv_send_noname);
+        send_music=convertView.findViewById(R.id.tv_music);
 
         // 화면에 표시될 View(layout이 inflate됨)로 부터 위젯에 대한 참조 획득
         ImageView personImageView = convertView.findViewById(R.id.iv_person);
@@ -61,6 +71,35 @@ public class ListViewAdapterForHeart extends BaseAdapter {
         dateTextView.setText(listViewItem.getDate());
         ampmTextView.setText(listViewItem.getAMPM());
         timeTextView.setText(listViewItem.getTime());
+
+         UserName=listViewItem.getName().toString().substring(0,3);
+
+        emoticon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,UserName+" 님께 감정 전송 되었습니다",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        send_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context.getApplicationContext(),UserName+" 님께 감정 전송 되었습니다",Toast.LENGTH_LONG).show();
+            }
+        });
+        no_nameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context.getApplicationContext(),UserName+" 님께 감정이 익명으로 전송 되었습니다",Toast.LENGTH_LONG).show();
+            }
+        });
+        send_music.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context.getApplicationContext(),UserName+" 님께 음악을 추천해주세요",Toast.LENGTH_LONG).show();
+            }
+        });
+
 
         return convertView;
     }
