@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button button_signup, button_login;
+    Button button_signup, button_login, button_findPassword;
     EditText editText_phone, getEditText_phone_pw;
     CheckBox chk_auto;
     SharedPreferences setting;
@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
         button_signup = findViewById(R.id.button_signup);
         button_login = findViewById(R.id.button_login);
+        button_findPassword = findViewById(R.id.button_findPassword);
         editText_phone = findViewById(R.id.editText_phone);
         getEditText_phone_pw = findViewById(R.id.editText_pw);
         chk_auto=findViewById(R.id.chk_auto);
@@ -52,6 +53,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent signUpIntent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(signUpIntent);
+            }
+        });
+
+        button_findPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent findPasswordIntent = new Intent(getApplicationContext(), FindPassword.class);
+                startActivity(findPasswordIntent);
             }
         });
 

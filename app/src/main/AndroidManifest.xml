@@ -29,13 +29,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".SignupActivity" android:theme="@style/NoAppTheme" />
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/NoAppTheme" />
         <activity android:name=".getDial" />
         <activity android:name=".Modify_Information" />
-
-        <activity android:name=".FriendClicked"/>
-        <activity android:name=".CopyrightActivity"></activity>
-
+        <activity android:name=".FriendClicked" />
+        <activity android:name=".CopyrightActivity" />
+        <activity
+            android:name=".FindPassword"
+            android:theme="@style/NoAppTheme"></activity>
     </application>
 
 </manifest>
