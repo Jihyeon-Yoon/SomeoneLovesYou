@@ -95,29 +95,24 @@ public class ListViewAdapterForFriend extends BaseAdapter {
 
         UserName=nameTextView.getText().toString();
 
-        emoticon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,UserName+" 님께 감정 전송 되었습니다",Toast.LENGTH_LONG).show();
-            }
-        });
+
 
         send_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context.getApplicationContext(),UserName+" 님께 감정 전송 되었습니다",Toast.LENGTH_LONG).show();
+                Toast.makeText(context.getApplicationContext(),UserName+"님께 감정 전송 되었습니다",Toast.LENGTH_SHORT).show();
             }
         });
         no_nameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context.getApplicationContext(),UserName+" 님께 감정이 익명으로 전송 되었습니다",Toast.LENGTH_LONG).show();
+                Toast.makeText(context.getApplicationContext(),UserName+"님께 감정이 익명으로 전송 되었습니다",Toast.LENGTH_SHORT).show();
             }
         });
         send_music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context.getApplicationContext(),UserName+" 님께 음악을 추천해주세요",Toast.LENGTH_LONG).show();
+                Toast.makeText(context.getApplicationContext(),UserName+"님께 음악을 추천해주세요",Toast.LENGTH_SHORT).show();
             }
         });
 
