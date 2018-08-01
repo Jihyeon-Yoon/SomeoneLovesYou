@@ -78,20 +78,7 @@ public class PlantHistory extends Fragment {
             e.printStackTrace();
         }
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getContext().getApplicationContext(),HistoryClicked.class);
-                intent.putExtra("startDate",itemList.get(position).getStartDate());
-                intent.putExtra("endDate",itemList.get(position).getEndDate());
-               // String temp=itemList.get(position).getName();
-                //String fixprof_name=temp.substring(0,temp.indexOf("님"));
-                //intent.putExtra("name",fixprof_name);
-               // intent.putExtra("phone",itemList.get(position).getPersonImgResId());
-                startActivity(intent);
 
-            }
-        });
 
 
         return rootView;

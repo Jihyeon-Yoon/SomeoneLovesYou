@@ -98,19 +98,6 @@ public class Friend extends Fragment {
         Collections.sort(itemList, nameAsc);
         adapter.notifyDataSetChanged();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getContext().getApplicationContext(),FriendClicked.class);
-                intent.putExtra("profile",Integer.toString(itemList.get(position).getPersonImgResId()));
-                intent.putExtra("name",itemList.get(position).getName());
-                intent.putExtra("phone",itemList.get(position).getPersonImgResId());
-                startActivity(intent);
-
-            }
-        });
-        listView.setFocusable(false);
-
         arraylist = new ArrayList<ListViewItemForFriend>();
         arraylist.addAll(itemList);
 

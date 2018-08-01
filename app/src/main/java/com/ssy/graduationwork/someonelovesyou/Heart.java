@@ -88,19 +88,7 @@ public class Heart extends Fragment {
         } catch(IOException e) {
             e.printStackTrace();
         }
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getContext().getApplicationContext(),FriendClicked.class);
-                intent.putExtra("profile",Integer.toString(itemList.get(position).getPersonImgResId()));
-                String temp=itemList.get(position).getName();
-                String fixprof_name=temp.substring(0,temp.indexOf("님"));
-                intent.putExtra("name",fixprof_name);
-                intent.putExtra("phone",itemList.get(position).getPersonImgResId());
-                startActivity(intent);
 
-            }
-        });
         arraylist = new ArrayList<ListViewItemForHeart> ();
         arraylist.addAll(itemList);
 

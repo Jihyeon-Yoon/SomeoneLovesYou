@@ -34,7 +34,6 @@
         <activity android:name=".Modify_Information" />
 
         <activity android:name=".FriendClicked"/>
-        <activity android:name=".HistoryClicked"/>
         <activity android:name=".CopyrightActivity"></activity>
 
     </application>
