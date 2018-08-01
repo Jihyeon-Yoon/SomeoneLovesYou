@@ -36,6 +36,7 @@
         <activity android:name=".Modify_Information" />
         <activity android:name=".FriendClicked" />
         <activity android:name=".CopyrightActivity" />
+        <activity android:name=".HistoryClicked"/>
         <activity
             android:name=".FindPassword"
             android:theme="@style/NoAppTheme"></activity>
