@@ -37,10 +37,14 @@
         <activity android:name=".FriendClicked" />
         <activity android:name=".CopyrightActivity" />
         <activity android:name=".HistoryClicked" />
+        <activity android:name=".PopupActivity"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+
         <activity
             android:name=".FindPassword"
             android:theme="@style/NoAppTheme" />
-        <activity android:name=".PopupActivity" />
+
+
         <activity android:name=".RecommandMusicActivity"></activity>
     </application>
 

@@ -43,7 +43,7 @@ public class Friend extends Fragment {
     EditText search;
 
     //감정설정
-    ImageButton ib_emoticon;
+    ImageButton ib_emoticon,statusBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -51,6 +51,8 @@ public class Friend extends Fragment {
 
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_friend, null);
+        statusBtn=rootView.findViewById(R.id.ib_edit);
+
 
 
 
@@ -162,6 +164,15 @@ public class Friend extends Fragment {
         arraylist = new ArrayList<ListViewItemForFriend>();
         arraylist.addAll(itemList);
 
+        statusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), PopupActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
 
 
 
@@ -199,6 +210,7 @@ public class Friend extends Fragment {
 
     }
 
+
     public void search(String charText) {
 
         // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
@@ -234,6 +246,8 @@ public class Friend extends Fragment {
 
 
 
+
 }
+
 
 
