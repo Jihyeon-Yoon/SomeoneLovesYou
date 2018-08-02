@@ -2,8 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/e1"
-        android:title="낙천"
-        android:icon="@drawable/emoticon_silent" />
+        android:title="낙천" />
     <item
         android:id="@+id/e2"
         android:title="사랑"/>

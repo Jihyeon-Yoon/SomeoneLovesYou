@@ -7,4 +7,12 @@
     <color name="nav_bg">#ffffff</color>
     <color name="nav_icon">#f6f7f4</color>
     <color name="nav_text">#f4f7f1</color>
+
+    //popup editText color
+    <color name="controlNormal">#FF4081</color>
+    <color name="controlActivated">#FF4081</color>
+    <color name="cursorDrawable">#FF4081</color>
+    <color name="editTextColor">#3c3f41</color>
+    <color name="editTextHint">#9f9fa0</color>
+    <color name="editTextHighlight">#FF4081</color>
 </resources>

@@ -1,151 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#eeeeee"
     android:orientation="vertical"
     android:layout_width="330dp"
-    android:layout_height="300dp">
+    android:layout_height="250dp">
 
-    <!-- 타이틀바 -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="프로필 관리"
-            android:textSize="20sp"
-            android:textColor="#8fc552"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="#3c3f41"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 타이틀바 -->
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="53dp" />
-    </LinearLayout>
-    <!-- //end 타이틀바 -->
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="프로필 관리"
+                android:textSize="20sp"
+                android:textColor="#8fc552"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="#3c3f41"
+                android:layout_width="match_parent"
+                android:layout_height="53dp" />
+        </LinearLayout>
+        <!-- //end 타이틀바 -->
 
-    <!-- 상태메시지 -->
-    <LinearLayout
+        <ImageButton
+            android:id="@+id/ib_emoticon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/emoticon_silent"
+            android:layout_marginTop="5dp"/>
 
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="상태메시지"/>
+        <!-- 상태메시지 -->
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="상테메시지를 입력하세요"
-            android:textSize="15dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="92dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이모티콘" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <RadioButton
-                android:id="@+id/radio0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="감정1" />
-
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="감정2" />
-
-            <RadioButton
-
-                android:id="@+id/radio2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="감정3" />
-
-
-        </RadioGroup>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="horizontal">
-
-
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <RadioButton
-                android:id="@+id/radio3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="감정4" />
-
-            <RadioButton
-                android:id="@+id/radio4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="감정5" />
-
-            <RadioButton
-
-                android:id="@+id/radio5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="감정6" />
-
-
-        </RadioGroup>
-
-
-    </LinearLayout>
-    <!-- Notice -->
-
-    <View
-        android:background="#66bdbdbd"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <!-- 닫기 버튼 -->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:text="확인"
-            android:textSize="15sp"
-            android:textColor="#ff7a00"
-            android:padding="16dp"
-            android:gravity="center"
-            android:background="#00000000"
+            android:id="@+id/et_stateMessage"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:hint="상태메시지"
+            android:textColor="#3c3f41"
+            android:textColorHint="#9f9fa0"
+            android:textColorHighlight="#FF4081"
             />
+
+        <View
+            android:background="#66bdbdbd"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <!-- 닫기 버튼 -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_save"
+                android:text="업데이트"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#8fc552"
+                android:gravity="center"
+                android:background="#00000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <!--// 닫기 버튼 -->
+
+
     </LinearLayout>
-    <!--// 닫기 버튼 -->
-</LinearLayout>
+
+
+</ScrollView>
 
 

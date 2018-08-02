@@ -54,55 +54,6 @@ public class Friend extends Fragment {
         statusBtn=rootView.findViewById(R.id.ib_edit);
 
 
-
-
-
-        /*ib_emoticon = rootView.findViewById(R.id.ib_emoticon);
-        ib_emoticon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popup= new PopupMenu(getActivity(), v);//v는 클릭된 뷰를 의미
-
-                getActivity().getMenuInflater().inflate(R.menu.emotion, popup.getMenu());
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()){
-                            case R.id.e1:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_optimism);
-                                Toast.makeText(getActivity(),"메뉴1",Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.e2:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_love);
-                                Toast.makeText(getActivity(),"메뉴1",Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.e3:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_fear);
-                                Toast.makeText(getActivity(),"메뉴1",Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.e4:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_disapproval);
-                                Toast.makeText(getActivity(),"메뉴1",Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.e5:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_remorse);
-                                Toast.makeText(getActivity(),"메뉴1",Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.e6:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_anger);
-                                Toast.makeText(getActivity(),"메뉴1",Toast.LENGTH_SHORT).show();
-                                break;
-                            default:
-                                break;
-                        }
-                        return false;
-                    }
-                });
-
-                popup.show();//Popup Menu 보이기
-            }
-        });*/
-
         // 어레이리스트 새로 생성.
         itemList = new ArrayList<ListViewItemForFriend>();
 
