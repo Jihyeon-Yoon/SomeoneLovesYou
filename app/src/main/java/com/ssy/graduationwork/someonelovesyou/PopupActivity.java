@@ -1,17 +1,21 @@
 package com.ssy.graduationwork.someonelovesyou;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 
-public class PopupActivity extends AppCompatActivity {
+public class PopupActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+       // setTheme(android.R.style.Theme_NoTitleBar);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setTitle("회원 상태 변경");
+
+        super.onCreate(savedInstanceState);
+
+        //setTitle("회원 상태 변경");
         setContentView(R.layout.activity_popup);
     }
 
