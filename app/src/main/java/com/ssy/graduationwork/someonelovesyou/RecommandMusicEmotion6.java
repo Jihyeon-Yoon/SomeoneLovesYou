@@ -2,12 +2,12 @@ package com.ssy.graduationwork.someonelovesyou;
 
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
-import android.support.v4.app.Fragment;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,11 +18,10 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RecommandMusicEmotion1 extends Fragment {
+public class RecommandMusicEmotion6 extends Fragment {
 
     Button titleSortBtn, singerSortBtn;
     ListView listView;
@@ -31,7 +30,7 @@ public class RecommandMusicEmotion1 extends Fragment {
     ArrayList<ListViewItemForMusic> itemList;
 
 
-    public RecommandMusicEmotion1() {
+    public RecommandMusicEmotion6() {
         // Required empty public constructor
     }
 
@@ -40,7 +39,7 @@ public class RecommandMusicEmotion1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_recommand_music_emotion1, null);
+        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_recommand_music_emotion6, null);
 
         // 어레이리스트 새로 생성.
         itemList = new ArrayList<ListViewItemForMusic>();
@@ -53,7 +52,7 @@ public class RecommandMusicEmotion1 extends Fragment {
         listView.setAdapter(adapter);
 
         try {
-            InputStream is  = getResources().openRawResource(R.raw.music_e1);
+            InputStream is  = getResources().openRawResource(R.raw.music_e6);
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
             String[] temp = new String[2];
@@ -109,6 +108,7 @@ public class RecommandMusicEmotion1 extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
+
 
         return rootView;
     }

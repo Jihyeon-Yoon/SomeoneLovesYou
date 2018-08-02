@@ -38,15 +38,13 @@
         <activity android:name=".CopyrightActivity" />
         <activity android:name=".HistoryClicked" />
         <activity android:name=".PopupActivity"
-            android:theme="@style/Theme.AppCompat.Dialog"
-                 />
+            android:theme="@style/Theme.AppCompat.Dialog" />
 
         <activity
             android:name=".FindPassword"
             android:theme="@style/NoAppTheme" />
 
-
-        <activity android:name=".RecommandMusicActivity"></activity>
+        <activity android:name=".RecommandMusicActivity" />
     </application>
 
 </manifest>

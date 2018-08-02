@@ -1,8 +1,8 @@
 package com.ssy.graduationwork.someonelovesyou;
 
 import android.app.ActionBar;
-import android.app.Fragment;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -30,24 +30,23 @@ public class RecommandMusicActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.music_viewPager);
 
 
-        /*Fragment[] arrFragments = new Fragment[6];
-        arrFragments[0] = new Fragment();
-
-        *//*arrFragments[1] = new MusicEmotion2();
-        arrFragments[2] = new MusicEmotion3();
-        arrFragments[3] = new MusicEmotion4();
-        arrFragments[4] = new MusicEmotion5();
-        arrFragments[5] = new MusicEmotion6();*//*
+        Fragment[] arrFragments = new Fragment[6];
+        arrFragments[0] = new RecommandMusicEmotion1();
+        arrFragments[1] = new RecommandMusicEmotion2();
+        arrFragments[2] = new RecommandMusicEmotion3();
+        arrFragments[3] = new RecommandMusicEmotion4();
+        arrFragments[4] = new RecommandMusicEmotion5();
+        arrFragments[5] = new RecommandMusicEmotion6();
 
         // 프래그먼트 안의 프래그먼트라서 getChidFragmentManager를 써야한다.
         MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), arrFragments);
         viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);*/
+        tabLayout.setupWithViewPager(viewPager);
 
 
     }
 
-    /*private class MyPagerAdapter extends FragmentPagerAdapter {
+    private class MyPagerAdapter extends FragmentPagerAdapter {
         private Fragment[] arrFragments;
 
         public MyPagerAdapter(FragmentManager fm, Fragment[] arrFragments) {
@@ -84,7 +83,7 @@ public class RecommandMusicActivity extends AppCompatActivity {
                     return "";
             }
         }
-    }*/
+    }
 
 
 }
