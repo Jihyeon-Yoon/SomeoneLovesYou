@@ -30,7 +30,7 @@ public class Modify_Information extends AppCompatActivity {
     Button modifyBtn, EmailCheckBtn;
     ImageButton btn;
     ImageView profileImgageview;
-    EditText pw, checkPw, EmailText,statusText;
+    EditText pw, checkPw, EmailText;
     String Spw, ScheckPw,status;
     int emailBit=0;
     @Override
@@ -57,7 +57,6 @@ public class Modify_Information extends AppCompatActivity {
             EmailCheckBtn=findViewById(R.id.emailCheckBtn);
             pw=findViewById(R.id.editText_newPW);
             checkPw=findViewById(R.id.editText_checkPW);
-            statusText=findViewById(R.id.editText_status);
             modifyBtn=findViewById(R.id.button_modifyAccount);
             btn=findViewById(R.id.Btn_Find);
            //profileImgageview=findViewById(R.id.SelectedImage);
@@ -81,7 +80,7 @@ public class Modify_Information extends AppCompatActivity {
                 public void onClick(View v) {
                     Spw=pw.getText().toString();
                     ScheckPw=checkPw.getText().toString();
-                    statusText.getText().toString();
+                    //statusText.getText().toString();
                     if(emailBit==0){
                         Toast.makeText(getApplicationContext(),"이메일 중복 확인해주세요",Toast.LENGTH_SHORT).show();
                     }

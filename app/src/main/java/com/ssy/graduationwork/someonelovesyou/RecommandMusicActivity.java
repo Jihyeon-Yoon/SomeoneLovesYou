@@ -24,18 +24,20 @@ public class RecommandMusicActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
 
-        /*// TabLayout + ViewPager
+        // TabLayout + ViewPager
         // TabLayout을 쓰기 위해서 build.gradle(Module: app)의 dependencies에 디자인 라이브러리 추가
         TabLayout tabLayout = findViewById(R.id.music_tab);
         ViewPager viewPager = findViewById(R.id.music_viewPager);
 
-        Fragment[] arrFragments = new Fragment[6];
-        arrFragments[0] = new MusicEmotion1();
-        arrFragments[1] = new MusicEmotion2();
+
+        /*Fragment[] arrFragments = new Fragment[6];
+        arrFragments[0] = new Fragment();
+
+        *//*arrFragments[1] = new MusicEmotion2();
         arrFragments[2] = new MusicEmotion3();
         arrFragments[3] = new MusicEmotion4();
         arrFragments[4] = new MusicEmotion5();
-        arrFragments[5] = new MusicEmotion6();
+        arrFragments[5] = new MusicEmotion6();*//*
 
         // 프래그먼트 안의 프래그먼트라서 getChidFragmentManager를 써야한다.
         MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), arrFragments);
@@ -45,7 +47,7 @@ public class RecommandMusicActivity extends AppCompatActivity {
 
     }
 
-   /* private class MyPagerAdapter extends FragmentPagerAdapter {
+    /*private class MyPagerAdapter extends FragmentPagerAdapter {
         private Fragment[] arrFragments;
 
         public MyPagerAdapter(FragmentManager fm, Fragment[] arrFragments) {
