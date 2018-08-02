@@ -1,6 +1,7 @@
 package com.ssy.graduationwork.someonelovesyou;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +93,8 @@ public class ListViewAdapterForHeart extends BaseAdapter {
         send_music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context.getApplicationContext(),UserName+"님께 음악을 추천해주세요",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, RecommandMusicActivity.class);
+                context.startActivity(intent);
             }
         });
 

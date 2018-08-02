@@ -81,9 +81,6 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         send_music.setFocusable(false);*/
 
 
-
-
-
         // Data set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         ListViewItemForFriend listViewItem = listViewItemList.get(position);
 
@@ -116,8 +113,8 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         send_music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(context.getApplicationContext(), RecommandMusicActivity.class);
-                startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));*/
+                Intent intent = new Intent(context, RecommandMusicActivity.class);
+                context.startActivity(intent);
             }
         });
 
