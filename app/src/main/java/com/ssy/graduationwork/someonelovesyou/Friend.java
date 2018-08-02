@@ -53,6 +53,8 @@ public class Friend extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_friend, null);
 
 
+
+
         /*ib_emoticon = rootView.findViewById(R.id.ib_emoticon);
         ib_emoticon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,11 +101,6 @@ public class Friend extends Fragment {
             }
         });*/
 
-
-
-
-
-
         // 어레이리스트 새로 생성.
         itemList = new ArrayList<ListViewItemForFriend>();
 
@@ -123,9 +120,6 @@ public class Friend extends Fragment {
         // 리스트뷰 참조 및 adpater 달기
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(adapter);
-
-
-
 
 
 
