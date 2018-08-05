@@ -28,21 +28,16 @@ public class Music extends Fragment {
         TabLayout tabLayout = rootView.findViewById(R.id.music_tab);
         ViewPager viewPager = rootView.findViewById(R.id.music_viewPager);
 
-        Fragment[] arrFragments = new Fragment[6];
+        Fragment[] arrFragments = new Fragment[4];
         arrFragments[0] = new MusicEmotion1();
         arrFragments[1] = new MusicEmotion2();
         arrFragments[2] = new MusicEmotion3();
         arrFragments[3] = new MusicEmotion4();
-        arrFragments[4] = new MusicEmotion5();
-        arrFragments[5] = new MusicEmotion6();
 
         // 프래그먼트 안의 프래그먼트라서 getChidFragmentManager를 써야한다.
         MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager(), arrFragments);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-
-
-
 
         return rootView;
     }
@@ -69,17 +64,13 @@ public class Music extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch(position) {
                 case 0:
-                    return "낙천";
+                    return "행복";
                 case 1:
-                    return "사랑";
+                    return "불안";
                 case 2:
-                    return "공포";
+                    return "슬픔";
                 case 3:
-                    return "반감";
-                case 4:
-                    return "회한";
-                case 5:
-                    return "분노";
+                    return "평온";
                 default:
                     return "";
             }

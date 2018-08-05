@@ -30,13 +30,11 @@ public class RecommandMusicActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.music_viewPager);
 
 
-        Fragment[] arrFragments = new Fragment[6];
+        Fragment[] arrFragments = new Fragment[4];
         arrFragments[0] = new RecommandMusicEmotion1();
         arrFragments[1] = new RecommandMusicEmotion2();
         arrFragments[2] = new RecommandMusicEmotion3();
         arrFragments[3] = new RecommandMusicEmotion4();
-        arrFragments[4] = new RecommandMusicEmotion5();
-        arrFragments[5] = new RecommandMusicEmotion6();
 
         // 프래그먼트 안의 프래그먼트라서 getChidFragmentManager를 써야한다.
         MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager(), arrFragments);
@@ -68,17 +66,13 @@ public class RecommandMusicActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch(position) {
                 case 0:
-                    return "낙천";
+                    return "행복";
                 case 1:
-                    return "사랑";
+                    return "불안";
                 case 2:
-                    return "공포";
+                    return "슬픔";
                 case 3:
-                    return "반감";
-                case 4:
-                    return "회한";
-                case 5:
-                    return "분노";
+                    return "평온";
                 default:
                     return "";
             }
