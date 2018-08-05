@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
-                    android:src="@drawable/emoticon_love">
+                    android:src="@drawable/emoticon_happy">
                 </ImageView>
 
                 <TextView
@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="사랑"
+                    android:text="행복"
                     android:gravity="center"/>
             </LinearLayout>
 

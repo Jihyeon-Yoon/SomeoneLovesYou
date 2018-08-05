@@ -40,22 +40,16 @@ public class PopupActivity extends FragmentActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.e1:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_optimism);
+                                ib_emoticon.setImageResource(R.drawable.emoticon_happy);
                                 break;
                             case R.id.e2:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_love);
+                                ib_emoticon.setImageResource(R.drawable.emoticon_confused);
                                 break;
                             case R.id.e3:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_fear);
-                                break;
-                            case R.id.e4:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_disapproval);
-                                break;
-                            case R.id.e5:
                                 ib_emoticon.setImageResource(R.drawable.emoticon_remorse);
                                 break;
-                            case R.id.e6:
-                                ib_emoticon.setImageResource(R.drawable.emoticon_anger);
+                            case R.id.e4:
+                                ib_emoticon.setImageResource(R.drawable.emoticon_smiling);
                                 break;
                             default:
                                 break;
