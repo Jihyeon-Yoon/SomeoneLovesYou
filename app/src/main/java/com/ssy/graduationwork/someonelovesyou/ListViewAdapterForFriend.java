@@ -101,13 +101,13 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         send_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context.getApplicationContext(),UserName+"님께 감정 전송 되었습니다",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context.getApplicationContext(),UserName+"님께 하트가 전송되었습니다",Toast.LENGTH_SHORT).show();
             }
         });
         no_nameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context.getApplicationContext(),UserName+"님께 감정이 익명으로 전송 되었습니다",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context.getApplicationContext(),UserName+"님께 하트가 익명으로 전송되었습니다",Toast.LENGTH_SHORT).show();
             }
         });
         send_music.setOnClickListener(new View.OnClickListener() {
