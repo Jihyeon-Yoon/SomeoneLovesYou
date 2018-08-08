@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:weightSum="5"
+            android:weightSum="10"
+            android:layout_marginRight="5dp"
             >
             <TextView
                 android:id="@+id/tv_singer"
@@ -36,7 +37,18 @@
                 android:textSize="13dp"
                 android:padding="5dp"
                 android:layout_gravity="center"
-                android:layout_weight="4"
+                android:layout_weight="8"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_send"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/send"
+                android:layout_weight="1"
                 />
 
             <ImageButton
@@ -44,10 +56,9 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:paddingLeft="5dp"
-                android:src="@drawable/youtube"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
+                android:src="@drawable/youtube"
                 android:layout_weight="1"
                 />
 

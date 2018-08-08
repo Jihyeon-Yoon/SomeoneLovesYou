@@ -5,24 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by 윤지현 on 2018-07-19.
- */
-
-
-public class ListViewAdapterForMusic extends BaseAdapter {
+public class ListViewAdapterForMusicRecommend extends BaseAdapter {
     // Adapter에 추가한 데이터를 저장하기 위한 ArrayList
-    private ArrayList<ListViewItemForMusic> listViewItemList;
+    private ArrayList<ListViewItemForMusicRecommend> listViewItemList;
 
     // ListViewAdatper의 생성자
-    public ListViewAdapterForMusic(ArrayList<ListViewItemForMusic> itemList) {
+    public ListViewAdapterForMusicRecommend(ArrayList<ListViewItemForMusicRecommend> itemList) {
         if(itemList == null) {
-            listViewItemList = new ArrayList<ListViewItemForMusic>();
+            listViewItemList = new ArrayList<ListViewItemForMusicRecommend>();
         }
         else {
             listViewItemList = itemList;
@@ -43,7 +37,7 @@ public class ListViewAdapterForMusic extends BaseAdapter {
         // listview_item layout을 inflate하여 convertView 참조 획득
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.lv_music_item, parent, false);
+            convertView = inflater.inflate(R.layout.lv_music_recommed_item, parent, false);
         }
 
         // 화면에 표시될 View(layout이 inflate됨)로 부터 위젯에 대한 참조 획득
@@ -52,7 +46,7 @@ public class ListViewAdapterForMusic extends BaseAdapter {
 
 
         // Data set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        ListViewItemForMusic listViewItem = listViewItemList.get(position);
+        ListViewItemForMusicRecommend listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         titleTextView.setText(listViewItem.getTitle());
@@ -77,7 +71,7 @@ public class ListViewAdapterForMusic extends BaseAdapter {
     // 아이템 데이터 추가를 위한 함수, 개발자가 원하는대로 작성 가능
     // temp 0: 제목, 1: 가수, 2: 링크
     public void addItem(String title, String singer, String linkAddress) {
-        ListViewItemForMusic item = new ListViewItemForMusic();
+        ListViewItemForMusicRecommend item = new ListViewItemForMusicRecommend();
 
         item.setTitle(title);
         item.setSinger(singer);

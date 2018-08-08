@@ -66,18 +66,19 @@ public class MusicEmotion1 extends Fragment {
             InputStream is  = getResources().openRawResource(R.raw.music_e1);
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
-            String[] temp = new String[2];
-            // temp 0: 제목, 1: 가수
+            String[] temp = new String[3];
+            // temp 0: 제목, 1: 가수, 2: 링크
             while ((br.readLine()) != null) { // 책 사이의 개행(빈 줄 하나) 읽기
 
-                for(int i = 0; i < 2; i++) {
+                for(int i = 0; i < 3; i++) {
                     temp[i] = br.readLine();
                 }
 
                 String title = temp[0];
                 String singer = temp[1];
+                String linkAddress = temp[2];
 
-                adapter.addItem(title, singer);
+                adapter.addItem(title, singer, linkAddress);
 
             }
 

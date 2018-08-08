@@ -28,10 +28,10 @@ public class RecommandMusicEmotion3 extends Fragment {
 
     Button titleSortBtn, singerSortBtn;
     ListView listView;
-    ListViewAdapterForMusic adapter;
+    ListViewAdapterForMusicRecommend adapter;
 
-    ArrayList<ListViewItemForMusic> itemList;
-    ArrayList<ListViewItemForMusic>  arraylist;
+    ArrayList<ListViewItemForMusicRecommend> itemList;
+    ArrayList<ListViewItemForMusicRecommend>  arraylist;
     //검색창
     EditText search;
 
@@ -48,10 +48,10 @@ public class RecommandMusicEmotion3 extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_recommand_music_emotion3, null);
 
         // 어레이리스트 새로 생성.
-        itemList = new ArrayList<ListViewItemForMusic>();
+        itemList = new ArrayList<ListViewItemForMusicRecommend>();
 
         //Adapter 생성
-        adapter = new ListViewAdapterForMusic(itemList);
+        adapter = new ListViewAdapterForMusicRecommend(itemList);
         search=rootView.findViewById(R.id.editSearch);
 
         // 리스트뷰 참조 및 adpater 달기
@@ -62,18 +62,19 @@ public class RecommandMusicEmotion3 extends Fragment {
             InputStream is  = getResources().openRawResource(R.raw.music_e3);
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
-            String[] temp = new String[2];
-            // temp 0: 제목, 1: 가수
+            String[] temp = new String[3];
+            // temp 0: 제목, 1: 가수, 2: 링크
             while ((br.readLine()) != null) { // 책 사이의 개행(빈 줄 하나) 읽기
 
-                for(int i = 0; i < 2; i++) {
+                for(int i = 0; i < 3; i++) {
                     temp[i] = br.readLine();
                 }
 
                 String title = temp[0];
                 String singer = temp[1];
+                String linkAddress = temp[2];
 
-                adapter.addItem(title, singer);
+                adapter.addItem(title, singer, linkAddress);
 
             }
 
@@ -87,9 +88,9 @@ public class RecommandMusicEmotion3 extends Fragment {
         titleSortBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Comparator<ListViewItemForMusic> nameAsc = new Comparator<ListViewItemForMusic>() {
+                Comparator<ListViewItemForMusicRecommend> nameAsc = new Comparator<ListViewItemForMusicRecommend>() {
                     @Override
-                    public int compare(ListViewItemForMusic item1, ListViewItemForMusic item2) {
+                    public int compare(ListViewItemForMusicRecommend item1, ListViewItemForMusicRecommend item2) {
                         return item1.getTitle().compareTo(item2.getTitle());
                     }
                 };
@@ -104,9 +105,9 @@ public class RecommandMusicEmotion3 extends Fragment {
         singerSortBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Comparator<ListViewItemForMusic> nameAsc = new Comparator<ListViewItemForMusic>() {
+                Comparator<ListViewItemForMusicRecommend> nameAsc = new Comparator<ListViewItemForMusicRecommend>() {
                     @Override
-                    public int compare(ListViewItemForMusic item1, ListViewItemForMusic item2) {
+                    public int compare(ListViewItemForMusicRecommend item1, ListViewItemForMusicRecommend item2) {
                         return item1.getSinger().compareTo(item2.getSinger());
                     }
                 };
@@ -116,7 +117,7 @@ public class RecommandMusicEmotion3 extends Fragment {
             }
         });
 
-        arraylist = new  ArrayList<ListViewItemForMusic>();
+        arraylist = new  ArrayList<ListViewItemForMusicRecommend>();
         arraylist.addAll(itemList);
 
         search.addTextChangedListener(new TextWatcher() {
@@ -171,7 +172,6 @@ public class RecommandMusicEmotion3 extends Fragment {
         // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
         adapter.notifyDataSetChanged();
     }
-
 
 
 }

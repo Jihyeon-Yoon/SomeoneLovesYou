@@ -89,12 +89,14 @@
                         android:textSize="15dp">
                     </TextView>
 
-                    <ImageView
-                        android:id="@+id/iv_youtube"
+                    <ImageButton
+                        android:id="@+id/ib_youtube"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:src="@drawable/youtube"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
                         android:layout_weight="1" />
 
                 </LinearLayout>
