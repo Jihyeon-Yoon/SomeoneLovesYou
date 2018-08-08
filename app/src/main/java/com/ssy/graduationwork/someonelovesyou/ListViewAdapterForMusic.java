@@ -1,14 +1,19 @@
 package com.ssy.graduationwork.someonelovesyou;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static android.net.Uri.parse;
 
 /**
  * Created by 윤지현 on 2018-07-19.
@@ -49,6 +54,7 @@ public class ListViewAdapterForMusic extends BaseAdapter {
         // 화면에 표시될 View(layout이 inflate됨)로 부터 위젯에 대한 참조 획득
         TextView titleTextView = convertView.findViewById(R.id.tv_title);
         TextView singerTextView = convertView.findViewById(R.id.tv_singer);
+        ImageButton youtubeBtn=convertView.findViewById(R.id.ib_youtube);
 
 
         // Data set(listViewItemList)에서 position에 위치한 데이터 참조 획득
@@ -57,6 +63,21 @@ public class ListViewAdapterForMusic extends BaseAdapter {
         // 아이템 내 각 위젯에 데이터 반영
         titleTextView.setText(listViewItem.getTitle());
         singerTextView.setText(listViewItem.getSinger());
+
+
+        final String URL=listViewItem.getLinkAddress();
+
+        youtubeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse( URL));
+
+                v.getContext().startActivity(intent);
+
+            }
+        });
 
 
         return convertView;
