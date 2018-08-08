@@ -4,12 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/editSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="음악명으로 검색"/>
+
     <LinearLayout
         android:id="@+id/linearbuttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2">
+
+
 
         <Button
             android:id="@+id/btn_sort_title"
