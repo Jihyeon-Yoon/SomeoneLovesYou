@@ -121,8 +121,8 @@ public class Friend extends Fragment {
                 Intent intent = new Intent(getContext(), PopupActivity.class);
                 startActivity(intent);
 
-            }
-        });
+    }
+});
 
 
 
@@ -189,12 +189,6 @@ public class Friend extends Fragment {
         // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
         adapter.notifyDataSetChanged();
     }
-
-
-
-
-
-
 
 
 

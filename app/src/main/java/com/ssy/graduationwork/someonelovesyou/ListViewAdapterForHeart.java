@@ -2,6 +2,7 @@ package com.ssy.graduationwork.someonelovesyou;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by 윤지현 on 2018-07-18.
@@ -95,6 +98,10 @@ public class ListViewAdapterForHeart extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context, RecommandMusicActivity.class);
                 context.startActivity(intent);
+                SharedPreferences sp = context.getSharedPreferences("a", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("key", UserName);
+                editor.commit();
             }
         });
 

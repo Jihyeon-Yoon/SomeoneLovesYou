@@ -1,13 +1,20 @@
 package com.ssy.graduationwork.someonelovesyou;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ListViewAdapterForMusicRecommend extends BaseAdapter {
     // Adapter에 추가한 데이터를 저장하기 위한 ArrayList
@@ -39,10 +46,18 @@ public class ListViewAdapterForMusicRecommend extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.lv_music_recommed_item, parent, false);
         }
+        SharedPreferences sp = context.getSharedPreferences("a", MODE_PRIVATE);
+
+        final String receiver = sp.getString("key", " ");
+
+
+
 
         // 화면에 표시될 View(layout이 inflate됨)로 부터 위젯에 대한 참조 획득
         TextView titleTextView = convertView.findViewById(R.id.tv_title);
         TextView singerTextView = convertView.findViewById(R.id.tv_singer);
+        ImageButton youtubeBtn=convertView.findViewById(R.id.ib_youtube);
+        ImageButton musicSendBtn=convertView.findViewById(R.id.ib_send);
 
 
         // Data set(listViewItemList)에서 position에 위치한 데이터 참조 획득
@@ -51,6 +66,31 @@ public class ListViewAdapterForMusicRecommend extends BaseAdapter {
         // 아이템 내 각 위젯에 데이터 반영
         titleTextView.setText(listViewItem.getTitle());
         singerTextView.setText(listViewItem.getSinger());
+
+        final String URL=listViewItem.getLinkAddress();
+        final String MusicTitle=listViewItem.getTitle();
+        final String singer=listViewItem.getSinger();
+        
+
+        youtubeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse( URL));
+
+                v.getContext().startActivity(intent);
+
+            }
+        });
+
+        musicSendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context.getApplicationContext(),receiver+"님께 "+MusicTitle+"-"+singer+"를 추천했어요" ,Toast.LENGTH_SHORT).show();
+                //URL서버로 넘기기
+            }
+        });
 
 
         return convertView;

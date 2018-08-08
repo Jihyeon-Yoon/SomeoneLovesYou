@@ -2,6 +2,7 @@ package com.ssy.graduationwork.someonelovesyou;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static java.security.AccessController.getContext;
 
@@ -63,6 +65,9 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         }
 
 
+
+
+
         // 화면에 표시될 View(layout이 inflate됨)로 부터 위젯에 대한 참조 획득
         ImageView personImageView = convertView.findViewById(R.id.iv_person);
         TextView nameTextView = convertView.findViewById(R.id.tv_name);
@@ -93,8 +98,9 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         send_name.setFocusable(false);
         no_nameBtn.setFocusable(false);
         send_music.setFocusable(false);*/
-
         UserName=nameTextView.getText().toString();
+
+
 
 
 
@@ -115,6 +121,11 @@ public class ListViewAdapterForFriend extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context, RecommandMusicActivity.class);
                 context.startActivity(intent);
+                SharedPreferences sp = context.getSharedPreferences("a", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("key", UserName);
+                editor.commit();
+
             }
         });
 
