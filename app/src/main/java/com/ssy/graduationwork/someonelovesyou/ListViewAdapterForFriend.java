@@ -99,6 +99,8 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         no_nameBtn.setFocusable(false);
         send_music.setFocusable(false);*/
         UserName=nameTextView.getText().toString();
+        final int Phone=listViewItem.getPersonImgResId();
+
 
 
 
@@ -124,6 +126,9 @@ public class ListViewAdapterForFriend extends BaseAdapter {
                 SharedPreferences sp = context.getSharedPreferences("a", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putString("key", UserName);
+                editor.putInt("key2", Phone);
+                Toast.makeText(context.getApplicationContext(),Phone,Toast.LENGTH_LONG).show();
+
                 editor.commit();
 
             }

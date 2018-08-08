@@ -48,8 +48,8 @@ public class ListViewAdapterForMusicRecommend extends BaseAdapter {
         }
         SharedPreferences sp = context.getSharedPreferences("a", MODE_PRIVATE);
 
-        final String receiver = sp.getString("key", " ");
-
+        final String receiver_name = sp.getString("key", " ");
+        final int receiver_phone=sp.getInt("key2",0);
 
 
 
@@ -70,7 +70,7 @@ public class ListViewAdapterForMusicRecommend extends BaseAdapter {
         final String URL=listViewItem.getLinkAddress();
         final String MusicTitle=listViewItem.getTitle();
         final String singer=listViewItem.getSinger();
-        
+
 
         youtubeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +87,7 @@ public class ListViewAdapterForMusicRecommend extends BaseAdapter {
         musicSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context.getApplicationContext(),receiver+"님께 "+MusicTitle+"-"+singer+"를 추천했어요" ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(context.getApplicationContext(),receiver_phone+"님께 "+MusicTitle+"-"+singer+"를 추천했어요" ,Toast.LENGTH_SHORT).show();
                 //URL서버로 넘기기
             }
         });
