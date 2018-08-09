@@ -81,12 +81,14 @@ public class Friend extends Fragment {
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
             String[] temp = new String[3];
-            // temp 0: 폰번호(이미지이름), 1: 이름, 2: 상태
+            // temp 0:폰번호 1: 이미지이름, 2: 이름, 3: 상태
             while ((br.readLine()) != null) { // 책 사이의 개행(빈 줄 하나) 읽기
 
                 for(int i = 0; i < 3; i++) {
                     temp[i] = br.readLine();
                 }
+
+                String phone = temp[0];
 
                 //이미지이름==폰번호
                 String personImgName = "ph" + temp[0];
@@ -96,7 +98,7 @@ public class Friend extends Fragment {
                 String name = temp[1];
                 String state = temp[2];
 
-                adapter.addItem(personImgResId, name, state);
+                adapter.addItem(phone, personImgResId, name, state);
 
             }
 

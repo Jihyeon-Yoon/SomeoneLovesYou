@@ -6,11 +6,13 @@ package com.ssy.graduationwork.someonelovesyou;
 
 public class ListViewItemForFriend {
 
-    // temp 0: 폰번호(이미지이름), 1: 이름, 2: 상태
+    // temp 0:폰번호 1: 이미지이름, 2: 이름, 3: 상태
+    private String phone;
     private int personImgResId;
     private String name;
     private String state;
 
+    public void setPhone(String phone) { this.phone = phone; }
     public void setPersonImgResId(int personImgResId) { this.personImgResId = personImgResId; }
     public void setName(String name) {
         this.name = name;
@@ -20,7 +22,10 @@ public class ListViewItemForFriend {
     }
 
 
-    // temp 0: 폰번호(이미지이름), 1: 이름, 2: 상태
+    // temp 0:폰번호 1: 이미지이름, 2: 이름, 3: 상태
+    public String getPhone() {
+        return phone;
+    }
     public int getPersonImgResId() {
         return personImgResId;
     }

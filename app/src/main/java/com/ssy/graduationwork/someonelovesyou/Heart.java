@@ -63,12 +63,14 @@ public class Heart extends Fragment {
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
             String[] temp = new String[5];
-            // temp 0: 폰번호(이미지이름), 1: 이름, 2: 날짜, 3: 오전/후, 4: 시간
+            // temp 0:폰번호 1: 폰번호(이미지이름), 2: 이름, 3: 날짜, 4: 오전/후, 5: 시간
             while ((br.readLine()) != null) { // 책 사이의 개행(빈 줄 하나) 읽기
 
                 for(int i = 0; i < 5; i++) {
                     temp[i] = br.readLine();
                 }
+
+                String phone = temp[0];
 
                 //이미지이름==폰번호
                 String personImgName = "ph" + temp[0];
@@ -80,7 +82,7 @@ public class Heart extends Fragment {
                 String ampm = temp[3];
                 String time = temp[4];
 
-                adapter.addItem(personImgResId, name, date, ampm, time);
+                adapter.addItem(phone, personImgResId, name, date, ampm, time);
 
             }
 

@@ -125,9 +125,10 @@ public class ListViewAdapterForHeart extends BaseAdapter {
 
     // 아이템 데이터 추가를 위한 함수, 개발자가 원하는대로 작성 가능
     // temp 0: 폰번호(이미지이름), 1: 이름, 2: 날짜, 3: 오전/후, 4: 시간
-    public void addItem(int personImgResId, String name, String date, String ampm, String time) {
+    public void addItem(String phone, int personImgResId, String name, String date, String ampm, String time) {
         ListViewItemForHeart item = new ListViewItemForHeart();
 
+        item.setPhone(phone);
         item.setPersonImgResId(personImgResId);
         item.setName(name);
         item.setDate(date);
