@@ -73,6 +73,8 @@ public class PlantWho extends Fragment {
                     temp[i] = br.readLine();
                 }
 
+                String phone = temp[0];
+
                 //이미지이름==폰번호
                 String personImgName = "ph" + temp[0];
 
@@ -83,7 +85,7 @@ public class PlantWho extends Fragment {
                 String ampm = temp[3];
                 String time = temp[4];
 
-                adapter.addItem(personImgResId, name, date, ampm, time);
+                adapter.addItem(phone, personImgResId, name, date, ampm, time);
 
             }
 
