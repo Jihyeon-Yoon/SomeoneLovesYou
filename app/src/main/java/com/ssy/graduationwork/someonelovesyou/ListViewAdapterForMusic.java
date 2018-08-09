@@ -3,6 +3,7 @@ package com.ssy.graduationwork.someonelovesyou;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,10 @@ public class ListViewAdapterForMusic extends BaseAdapter {
         ImageButton youtubeBtn=convertView.findViewById(R.id.ib_youtube);
 
 
+        titleTextView.setSelected(true);
+
+
+
         // Data set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         ListViewItemForMusic listViewItem = listViewItemList.get(position);
 
@@ -78,6 +83,8 @@ public class ListViewAdapterForMusic extends BaseAdapter {
 
             }
         });
+
+        titleTextView.setSelected(true);
 
 
         return convertView;
