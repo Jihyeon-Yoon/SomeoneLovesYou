@@ -49,7 +49,7 @@ public class ListViewAdapterForMusicRecommend extends BaseAdapter {
         SharedPreferences sp = context.getSharedPreferences("a", MODE_PRIVATE);
 
         final String receiver_name = sp.getString("key", " ");
-        final int receiver_phone=sp.getInt("key2",0);
+        final String receiver_phone=sp.getString("key2"," ");
 
 
 
