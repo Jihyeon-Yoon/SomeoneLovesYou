@@ -41,6 +41,8 @@
         <!-- 상태메시지 -->
 
         <EditText
+
+            android:textCursorDrawable="@color/editTextHighlight"
             android:id="@+id/et_stateMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

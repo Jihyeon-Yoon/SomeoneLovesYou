@@ -1,13 +1,17 @@
 package com.ssy.graduationwork.someonelovesyou;
 
 import android.app.ActionBar;
+import android.graphics.PorterDuff;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -15,6 +19,8 @@ import android.widget.Toast;
 public class PopupActivity extends FragmentActivity {
 
     ImageButton ib_emoticon;
+    EditText statusText;
+    Button saveBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,11 @@ public class PopupActivity extends FragmentActivity {
 
         //setTitle("회원 상태 변경");
         setContentView(R.layout.activity_popup);
+        saveBtn=findViewById(R.id.btn_save);
+        statusText=findViewById(R.id.et_stateMessage);
+        statusText.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.editTextHighlight), PorterDuff.Mode.SRC_ATOP);
+
+        final String stateMessage=statusText.getText().toString();
 
 
         //감정 설정 메뉴
@@ -59,6 +70,12 @@ public class PopupActivity extends FragmentActivity {
                 });
 
                 popup.show();//Popup Menu 보이기
+            }
+        });
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  stateMessage
             }
         });
 

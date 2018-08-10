@@ -127,7 +127,6 @@ public class ListViewAdapterForFriend extends BaseAdapter {
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putString("key", UserName);
                 editor.putString("key2", Phone);
-                
 
                 editor.commit();
 
