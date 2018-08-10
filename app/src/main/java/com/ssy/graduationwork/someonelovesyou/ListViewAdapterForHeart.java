@@ -78,7 +78,7 @@ public class ListViewAdapterForHeart extends BaseAdapter {
         nameTextView.append("님이 당신을 생각하고 있어요");
 
          UserName=listViewItem.getName().toString();
-        final int Phone=listViewItem.getPersonImgResId();
+        final String Phone=listViewItem.getPhone();
 
 
 
@@ -102,7 +102,8 @@ public class ListViewAdapterForHeart extends BaseAdapter {
                 SharedPreferences sp = context.getSharedPreferences("a", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putString("key", UserName);
-                editor.putInt("key2", Phone);
+                editor.putString("key2", Phone);
+
                 editor.commit();
             }
         });
