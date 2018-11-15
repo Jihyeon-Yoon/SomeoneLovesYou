@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox chk_auto;
     SharedPreferences setting;
     SharedPreferences.Editor editor;
+
     String loginId, loginPwd;
 
 
@@ -26,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
 
         button_signup = findViewById(R.id.button_signup);
@@ -68,40 +71,68 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(chk_auto.isChecked()){
-                    Toast.makeText(getApplicationContext(),"로그인",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(),"로그인",Toast.LENGTH_SHORT).show();
                     String ID=editText_phone.getText().toString();
                     String PW=getEditText_phone_pw.getText().toString();
                     if((!ID.equals("01022345690")&&!ID.equals("01050345566"))||(!PW.equals("ah4023")&&!PW.equals("bk1243"))){
                         Toast toast= Toast.makeText(getApplicationContext(),"해당 ID가 존재하지 않습니다",Toast.LENGTH_SHORT);
                         toast.show();
                     }
-                    else{
+                    else if(ID.equals("01022345690")&&PW.equals("ah4023")){
                         editor.putString("ID",ID);
                         editor.putString("PW",PW);
                         editor.putBoolean("chk_auto",true);
                         editor.commit();
                         Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        MainIntent.putExtra("id","01022345690");
                         startActivity(MainIntent);
                     }
+                    else if(ID.equals("01050345566")&&PW.equals("bk1243")){
+                        editor.putString("ID",ID);
+                        editor.putString("PW",PW);
+                        editor.putBoolean("chk_auto",true);
+                        editor.commit();
+                        Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        MainIntent.putExtra("id","01050345566");
+                        startActivity(MainIntent);
 
-
-
+                    }
+                    else{
+                        Toast toast= Toast.makeText(getApplicationContext(),"비밀번호가 틀립니다",Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
 
                 }
                 else{
+                   // Toast.makeText(getApplicationContext(),"로그인",Toast.LENGTH_SHORT).show();
                     String ID=editText_phone.getText().toString();
                     String PW=getEditText_phone_pw.getText().toString();
                     if((!ID.equals("01022345690")&&!ID.equals("01050345566"))||(!PW.equals("ah4023")&&!PW.equals("bk1243"))){
                         Toast toast= Toast.makeText(getApplicationContext(),"해당 ID가 존재하지 않습니다",Toast.LENGTH_SHORT);
                         toast.show();
                     }
-                    else{
+                    else if(ID.equals("01022345690")&&PW.equals("ah4023")){
                         editor.putString("ID",ID);
                         editor.putString("PW",PW);
                         editor.putBoolean("chk_auto",true);
                         editor.commit();
                         Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        MainIntent.putExtra("id","01022345690");
                         startActivity(MainIntent);
+                    }
+                    else if(ID.equals("01050345566")&&PW.equals("bk1243")){
+                        editor.putString("ID",ID);
+                        editor.putString("PW",PW);
+                        editor.putBoolean("chk_auto",true);
+                        editor.commit();
+                        Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        MainIntent.putExtra("id","01050345566");
+                        startActivity(MainIntent);
+
+                    }
+                    else{
+                        Toast toast= Toast.makeText(getApplicationContext(),"비밀번호가 틀립니다",Toast.LENGTH_SHORT);
+                        toast.show();
                     }
 
                 }

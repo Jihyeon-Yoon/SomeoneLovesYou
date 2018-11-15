@@ -45,6 +45,13 @@ public class MainActivity extends AppCompatActivity
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         }
 
+        Bundle extras=getIntent().getExtras();
+        if(extras!=null){
+            String name=extras.getString("id");
+            Log.d("maintest",name);
+        }
+
+
 
         // 타이틀바 가운데 정렬
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
