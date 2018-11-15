@@ -38,6 +38,7 @@ public class PopupActivity extends FragmentActivity {
         final String stateMessage=statusText.getText().toString();
 
 
+        /*
         //감정 설정 메뉴
         ib_emoticon = findViewById(R.id.ib_emoticon);
         ib_emoticon.setOnClickListener(new View.OnClickListener() {
@@ -72,13 +73,14 @@ public class PopupActivity extends FragmentActivity {
                 popup.show();//Popup Menu 보이기
             }
         });
+        */
+
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               //  stateMessage
             }
         });
-
 
     }
 
@@ -90,10 +92,6 @@ public class PopupActivity extends FragmentActivity {
         }
         return true;
     }
-
-
-
-
 
 
 }
