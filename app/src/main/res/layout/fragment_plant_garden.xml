@@ -69,9 +69,6 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
     </LinearLayout>
 
-
-
-
     <ProgressBar
         android:id="@+id/heartBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -100,6 +97,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="하트 증가" />
+
+
 
 
     <ImageView

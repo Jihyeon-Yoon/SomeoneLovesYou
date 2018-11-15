@@ -71,21 +71,39 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"로그인",Toast.LENGTH_SHORT).show();
                     String ID=editText_phone.getText().toString();
                     String PW=getEditText_phone_pw.getText().toString();
+                    if((!ID.equals("01022345690")&&!ID.equals("01050345566"))||(!PW.equals("ah4023")&&!PW.equals("bk1243"))){
+                        Toast toast= Toast.makeText(getApplicationContext(),"해당 ID가 존재하지 않습니다",Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    else{
+                        editor.putString("ID",ID);
+                        editor.putString("PW",PW);
+                        editor.putBoolean("chk_auto",true);
+                        editor.commit();
+                        Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(MainIntent);
+                    }
 
-                    editor.putString("ID",ID);
-                    editor.putString("PW",PW);
-                    editor.putBoolean("chk_auto",true);
-                    editor.commit();
-                    Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(MainIntent);
+
 
 
                 }
                 else{
-                    editor.clear();
-                    editor.commit();
-                    Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(MainIntent);
+                    String ID=editText_phone.getText().toString();
+                    String PW=getEditText_phone_pw.getText().toString();
+                    if((!ID.equals("01022345690")&&!ID.equals("01050345566"))||(!PW.equals("ah4023")&&!PW.equals("bk1243"))){
+                        Toast toast= Toast.makeText(getApplicationContext(),"해당 ID가 존재하지 않습니다",Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    else{
+                        editor.putString("ID",ID);
+                        editor.putString("PW",PW);
+                        editor.putBoolean("chk_auto",true);
+                        editor.commit();
+                        Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(MainIntent);
+                    }
+
                 }
 
             }
