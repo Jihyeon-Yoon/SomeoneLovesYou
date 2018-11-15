@@ -4,6 +4,8 @@ package com.ssy.graduationwork.someonelovesyou.Service;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.ssy.graduationwork.someonelovesyou.Request.GetUserDTO;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
