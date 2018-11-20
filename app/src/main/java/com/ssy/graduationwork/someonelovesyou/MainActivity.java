@@ -29,6 +29,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 
+import com.kakao.usermgmt.response.model.User;
 import com.ssy.graduationwork.someonelovesyou.Object.UserVO;
 import com.ssy.graduationwork.someonelovesyou.Request.GetUserDTO;
 import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroCallback;
@@ -42,12 +43,14 @@ public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
          private RetroClient retroClient;
      final static String LOG = "MainActivity";
+     public UserVO user;
 
     @Override
     protected void onResume() {
 
         GetUserDTO dto = new GetUserDTO();
         dto.setUserid("01022345690");
+
         retroClient.getUSer(dto, new RetroCallback() {
 
             /*
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity
             public void onSuccess(int code, Object receivedData) {
                 try {
                     Log.d(LOG, "성공");
-                    
+
                     ResponseBody body = ((ResponseBody) receivedData);
                     String responseJSON = body.string();
                     //responseJSON JSON을 분석해서 처리하는 코드 작성.
@@ -80,6 +83,13 @@ public class MainActivity extends AppCompatActivity
                     String emotion = jObj2.getString("emotion");
                     String username = jObj2.getString("username");
                     UserVO user = new UserVO(userid,userpwd,state,emotion,username);
+
+                    Log.d("userTest",userid);
+
+                    loadFragment(new Friend());
+
+
+
                 }catch(Exception e){}
             }
 
@@ -121,7 +131,7 @@ public class MainActivity extends AppCompatActivity
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
-        loadFragment(new Friend());
+
         retroClient = RetroClient.getInstance(this).createBaseApi();
 
     }
@@ -147,6 +157,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.navigation_friend:
                 fragment = new Friend();
+                //((Friend)(fragment)).setUser(user);
                 break;
 
             case R.id.navigation_heart:

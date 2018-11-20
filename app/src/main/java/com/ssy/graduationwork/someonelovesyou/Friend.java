@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,9 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.kakao.usermgmt.response.model.User;
+import com.ssy.graduationwork.someonelovesyou.Object.UserVO;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,6 +37,7 @@ import java.util.Comparator;
 
 public class Friend extends Fragment {
 
+    UserVO gUser;
     ListView listView;
     ListViewAdapterForFriend adapter;
 
@@ -42,8 +47,14 @@ public class Friend extends Fragment {
     //검색창
     EditText search;
 
+
+   // TextView
+    TextView userName;
+
     //감정설정
     ImageButton ib_emoticon,statusBtn;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -52,6 +63,9 @@ public class Friend extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_friend, null);
         statusBtn=rootView.findViewById(R.id.ib_edit);
+
+        userName=rootView.findViewById(R.id.tv_name);
+      //  userName.setText(gUser.getUsername());
 
 
         // 어레이리스트 새로 생성.
@@ -162,6 +176,13 @@ public class Friend extends Fragment {
         search.clearFocus();
 
     }
+
+ /*   public void setUser(UserVO user){
+        gUser=user;
+        Log.d("test",user.getUsername());
+
+        //userName.setText(user.getUsername());
+    }*/
 
 
     public void search(String charText) {
