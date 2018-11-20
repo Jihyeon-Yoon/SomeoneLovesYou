@@ -3,6 +3,7 @@ package com.ssy.graduationwork.someonelovesyou;
 import android.Manifest;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -45,9 +46,57 @@ public class MainActivity extends AppCompatActivity
      final static String LOG = "MainActivity";
      public UserVO user;
 
+     SharedPreferences sh_Pref;
+     SharedPreferences.Editor toEdit;
+     String userName;
+
     @Override
     protected void onResume() {
 
+        super.onResume();
+    }
+
+    public void setSharedPreferncesUserInfo() {
+        sh_Pref = getSharedPreferences("User Info", MODE_PRIVATE);
+        toEdit = sh_Pref.edit();
+        toEdit.putString("UserName", userName);
+        toEdit.commit();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getHashKey();
+        setContentView(R.layout.activity_main);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 100);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+        }
+
+        Bundle extras=getIntent().getExtras();
+        if(extras!=null){
+            String name=extras.getString("id");
+            Log.d("maintest",name);
+        }
+
+
+
+        // 타이틀바 가운데 정렬
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_layout);
+
+
+
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(this);
+
+
+        retroClient = RetroClient.getInstance(this).createBaseApi();
+
+        //서버에서 유저 정보 받아오기
         GetUserDTO dto = new GetUserDTO();
         dto.setUserid("01022345690");
 
@@ -84,7 +133,9 @@ public class MainActivity extends AppCompatActivity
                     String username = jObj2.getString("username");
                     UserVO user = new UserVO(userid,userpwd,state,emotion,username);
 
-                    Log.d("userTest",userid);
+                    Log.d("userTest",username);
+                    userName = username;
+                    setSharedPreferncesUserInfo();
 
                     loadFragment(new Friend());
 
@@ -98,41 +149,6 @@ public class MainActivity extends AppCompatActivity
                 Log.d(LOG,"실패");
             }
         });
-
-        super.onResume();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getHashKey();
-        setContentView(R.layout.activity_main);
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 100);
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
-        }
-
-        Bundle extras=getIntent().getExtras();
-        if(extras!=null){
-            String name=extras.getString("id");
-            Log.d("maintest",name);
-        }
-
-
-
-        // 타이틀바 가운데 정렬
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar_layout);
-
-
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(this);
-
-
-        retroClient = RetroClient.getInstance(this).createBaseApi();
 
     }
 
