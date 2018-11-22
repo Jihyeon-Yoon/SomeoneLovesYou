@@ -2,6 +2,7 @@ package com.ssy.graduationwork.someonelovesyou.Retrofit;
 
 import android.content.Context;
 
+import com.ssy.graduationwork.someonelovesyou.Object.HeartDTO;
 import com.ssy.graduationwork.someonelovesyou.Request.GetUserDTO;
 import com.ssy.graduationwork.someonelovesyou.Service.RetroBaseApiService;
 
@@ -55,6 +56,25 @@ public class RetroClient {
 
     public void getUSer(GetUserDTO dto, final RetroCallback callback) {
         apiService.getUser(dto).enqueue(new Callback<ResponseBody>() {
+
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.code(), response.body());
+                } else {
+                    callback.onFailure(response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void sendHeart(HeartDTO dto, final RetroCallback callback) {
+        apiService.sendHeart(dto).enqueue(new Callback<ResponseBody>() {
 
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -4,6 +4,7 @@ package com.ssy.graduationwork.someonelovesyou.Service;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.ssy.graduationwork.someonelovesyou.Object.HeartDTO;
 import com.ssy.graduationwork.someonelovesyou.Request.GetUserDTO;
 
 import okhttp3.ResponseBody;
@@ -24,4 +25,5 @@ public interface RetroBaseApiService {
     //회원가입
     @POST("user/get")
     Call<ResponseBody> getUser(@Body GetUserDTO dto);
+    Call<ResponseBody> sendHeart(@Body HeartDTO dto);
 }
