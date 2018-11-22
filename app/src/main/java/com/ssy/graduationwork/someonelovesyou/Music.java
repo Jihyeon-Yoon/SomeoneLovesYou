@@ -1,5 +1,9 @@
 package com.ssy.graduationwork.someonelovesyou;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,6 +13,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -16,6 +25,16 @@ import android.view.ViewGroup;
  */
 
 public class Music extends Fragment {
+
+    Context context;
+    SharedPreferences sh_Pref;
+    String userEmotionString;
+
+    ImageView emoticon;
+    TextView userEmotion;
+    TextView recommendTitle;
+    TextView recommendSinger;
+    ImageButton youtubeBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,8 +58,19 @@ public class Music extends Fragment {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        emoticon = rootView.findViewById(R.id.iv_emoticon);
+        userEmotion = rootView.findViewById(R.id.tv_emotion);
+        recommendTitle = rootView.findViewById(R.id.tv_recommendTitle );
+        recommendSinger = rootView.findViewById(R.id.tv_recommendSinger);
+        youtubeBtn = rootView.findViewById(R.id.ib_youtube);
+
+        getSharedPreferenceUserInfo();
+        recommendMusic();
+
         return rootView;
     }
+
+
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
         private Fragment[] arrFragments;
@@ -75,6 +105,44 @@ public class Music extends Fragment {
                     return "";
             }
         }
+    }
+
+    public void getSharedPreferenceUserInfo() {
+        context = getActivity();
+        sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);
+        if(sh_Pref != null && sh_Pref.contains("userEmotion")) {
+            userEmotionString = sh_Pref.getString("userEmotion", "noEmotion");
+            userEmotion.setText(userEmotionString);
+        }
+
+    }
+
+    private void recommendMusic() {
+        if(userEmotionString.equals("행복")) {
+            emoticon.setImageResource(R.drawable.emoticon_happy);
+        } else if(userEmotionString.equals("불안")) {
+            emoticon.setImageResource(R.drawable.emoticon_confused);
+        } else if(userEmotionString.equals("슬픔")) {
+            emoticon.setImageResource(R.drawable.emoticon_remorse);
+        } else if(userEmotionString.equals("평온")) {
+            emoticon.setImageResource(R.drawable.emoticon_smiling);
+        } else {
+            emoticon.setImageResource(R.drawable.emoticon_silent);
+        }
+
+        recommendTitle.setText("Title");
+        recommendSinger.setText("Singer");
+        youtubeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("www.google.com"));
+
+                v.getContext().startActivity(intent);
+
+            }
+        });
     }
 
 

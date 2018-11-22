@@ -140,11 +140,11 @@ public class MainActivity extends AppCompatActivity
 
                     UserVO user = new UserVO(userID,userPWD,userState,userEmotion,userName);
 
-                    String temp = userID + " " + userPWD + " " + userState + " " + userEmotion + " " + userName;
+                    //String temp = userID + " " + userPWD + " " + userState + " " + userEmotion + " " + userName;
 
                     //Log.d("userTest",username);
 
-                    Toast.makeText(getApplicationContext(),temp,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),temp,Toast.LENGTH_LONG).show();
 
                     //서버에서 받은 유저 정보 저장
                     setSharedPreferncesUserInfo();
