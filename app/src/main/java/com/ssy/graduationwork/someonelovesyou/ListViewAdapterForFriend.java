@@ -109,6 +109,9 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         send_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(UserName.equals("박보검")){
+                    Toast.makeText(context.getApplicationContext(),"01050345566",Toast.LENGTH_SHORT).show();
+                }
                 Toast.makeText(context.getApplicationContext(),UserName+"님께 하트가 전송되었습니다",Toast.LENGTH_SHORT).show();
             }
         });
