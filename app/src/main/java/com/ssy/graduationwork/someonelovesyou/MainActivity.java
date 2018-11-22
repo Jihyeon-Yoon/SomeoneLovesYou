@@ -29,6 +29,7 @@ import java.security.NoSuchAlgorithmException;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.widget.Toast;
 
 import com.kakao.usermgmt.response.model.User;
 import com.ssy.graduationwork.someonelovesyou.Object.UserVO;
@@ -139,7 +140,11 @@ public class MainActivity extends AppCompatActivity
 
                     UserVO user = new UserVO(userID,userPWD,userState,userEmotion,userName);
 
+                    String temp = userID + " " + userPWD + " " + userState + " " + userEmotion + " " + userName;
+
                     //Log.d("userTest",username);
+
+                    Toast.makeText(getApplicationContext(),temp,Toast.LENGTH_LONG).show();
 
                     //서버에서 받은 유저 정보 저장
                     setSharedPreferncesUserInfo();

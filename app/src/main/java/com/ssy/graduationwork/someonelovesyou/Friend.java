@@ -59,7 +59,7 @@ public class Friend extends Fragment {
 
    // TextView
     TextView userName;
-    String tempName;
+    String stringTemp;
 
     //감정설정
     ImageButton ib_emoticon,statusBtn;
@@ -186,8 +186,8 @@ public class Friend extends Fragment {
         context = getActivity();
         sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);
         if(sh_Pref != null && sh_Pref.contains("userName")) {
-            tempName = sh_Pref.getString("userName", "noname");
-            userName.setText(tempName);
+            stringTemp = sh_Pref.getString("userName", "noname");
+            userName.setText(stringTemp);
         }
 
     }
