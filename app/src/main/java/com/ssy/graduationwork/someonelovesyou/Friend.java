@@ -184,9 +184,9 @@ public class Friend extends Fragment {
 
     public void getSharedPreferenceUserInfo() {
         context = getActivity();
-        sh_Pref = context.getSharedPreferences("User Info", MODE_PRIVATE);
-        if(sh_Pref != null && sh_Pref.contains("UserName")) {
-            tempName = sh_Pref.getString("UserName", "noname");
+        sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);
+        if(sh_Pref != null && sh_Pref.contains("userName")) {
+            tempName = sh_Pref.getString("userName", "noname");
             userName.setText(tempName);
         }
 

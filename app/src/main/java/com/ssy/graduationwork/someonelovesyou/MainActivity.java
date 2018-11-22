@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
      SharedPreferences sh_Pref;
      SharedPreferences.Editor toEdit;
-     String userName;
+     String userID, userName, userState, userEmotion, userPWD;
 
     @Override
     protected void onResume() {
@@ -57,9 +57,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void setSharedPreferncesUserInfo() {
-        sh_Pref = getSharedPreferences("User Info", MODE_PRIVATE);
+        sh_Pref = getSharedPreferences("userInfo", MODE_PRIVATE);
         toEdit = sh_Pref.edit();
-        toEdit.putString("UserName", userName);
+        toEdit.putString("userID", userID);
+        toEdit.putString("userName", userName);
+        toEdit.putString("userState", userState);
+        toEdit.putString("userEmotion", userEmotion);
+        toEdit.putString("userPWD", userPWD);
+
         toEdit.commit();
     }
 
@@ -126,15 +131,17 @@ public class MainActivity extends AppCompatActivity
                     Log.d(LOG,responseJSON);
                     JSONObject jObj1 = new JSONObject(responseJSON);
                     JSONObject jObj2 = jObj1.getJSONObject("results");
-                    String userid = jObj2.getString("userid");
-                    String userpwd = jObj2.getString("userpwd");
-                    String state = jObj2.getString("state");
-                    String emotion = jObj2.getString("emotion");
-                    String username = jObj2.getString("username");
-                    UserVO user = new UserVO(userid,userpwd,state,emotion,username);
+                    userID = jObj2.getString("userid");
+                    userName = jObj2.getString("username");
+                    userState = jObj2.getString("state");
+                    userEmotion = jObj2.getString("emotion");
+                    userPWD = jObj2.getString("userpwd");
 
-                    Log.d("userTest",username);
-                    userName = username;
+                    UserVO user = new UserVO(userID,userPWD,userState,userEmotion,userName);
+
+                    //Log.d("userTest",username);
+
+                    //서버에서 받은 유저 정보 저장
                     setSharedPreferncesUserInfo();
 
                     loadFragment(new Friend());
