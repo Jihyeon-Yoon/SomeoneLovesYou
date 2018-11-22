@@ -22,7 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kakao.usermgmt.response.model.User;
+import com.ssy.graduationwork.someonelovesyou.Object.HeartDTO;
 import com.ssy.graduationwork.someonelovesyou.Object.UserVO;
+import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroCallback;
+import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,7 +48,7 @@ public class Friend extends Fragment {
 
     Context context;
     SharedPreferences sh_Pref;
-
+    private RetroClient retroClient;
     UserVO gUser;
     ListView listView;
     ListViewAdapterForFriend adapter;
@@ -66,6 +69,7 @@ public class Friend extends Fragment {
 
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,6 +83,7 @@ public class Friend extends Fragment {
 
         //서버에서 받은 유저 네임 보여주기
         getSharedPreferenceUserInfo();
+
 
 
 

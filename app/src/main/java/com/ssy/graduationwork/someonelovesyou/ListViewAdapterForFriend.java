@@ -62,8 +62,10 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         final int pos = position;
         final  RetroClient retroClient;
         final String UserName;
+        int received_heartNum;
         final Context context = parent.getContext();
         final String LOG = "ConnectionTEST";
+
         retroClient = RetroClient.getInstance(context).createBaseApi();
         //retroClient = RetroClient.getInstance(this).createBaseApi();
 
@@ -119,6 +121,7 @@ public class ListViewAdapterForFriend extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if(UserName.equals("박보검")){
+                    String receiver_id = "01050345566";
                     HeartDTO dto = new HeartDTO();
                     dto.setSender("01022345690"); //이보영
                     dto.setReceiver("01050345566"); //박보검
@@ -137,6 +140,30 @@ public class ListViewAdapterForFriend extends BaseAdapter {
                             try {
                                 Log.d(LOG, "성공");
                                 Toast.makeText(context.getApplicationContext(),"성공!",Toast.LENGTH_SHORT).show();
+                            }catch(Exception e){}
+                        }
+
+                        @Override
+                        public void onFailure(int code) {
+                            Log.d(LOG,"실패");
+                        }
+                    });
+                    retroClient.getHeart(receiver_id, new RetroCallback() {
+
+                        /*
+                        응답 오류
+                         */
+                        @Override
+                        public void onError(Throwable t) {
+                            Log.d(LOG, "에러 : " + t.toString());
+                        }
+
+                        @Override
+                        public void onSuccess(int code, Object receivedData) {
+                            try {
+                                Log.d(LOG, "성공");
+                                ArrayList<HeartDTO> res = (ArrayList<HeartDTO>)receivedData;
+                                Toast.makeText(context.getApplicationContext(),"성공! 받은 리스트 수 : " + res.size(),Toast.LENGTH_SHORT).show();
                             }catch(Exception e){}
                         }
 

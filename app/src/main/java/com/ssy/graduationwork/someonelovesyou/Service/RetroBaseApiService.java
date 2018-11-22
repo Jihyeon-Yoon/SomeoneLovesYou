@@ -7,11 +7,15 @@ import android.os.Bundle;
 import com.ssy.graduationwork.someonelovesyou.Object.HeartDTO;
 import com.ssy.graduationwork.someonelovesyou.Request.GetUserDTO;
 
+import java.util.List;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface RetroBaseApiService {
 
@@ -27,4 +31,7 @@ public interface RetroBaseApiService {
     Call<ResponseBody> getUser(@Body GetUserDTO dto);
     @POST("user/send/heart")
     Call<ResponseBody> sendHeart(@Body HeartDTO dto);
+    //하트리스트 받기
+    @GET("user/get/heart")
+    Call<List<HeartDTO>> getHeart(@Query("id") String id);
 }

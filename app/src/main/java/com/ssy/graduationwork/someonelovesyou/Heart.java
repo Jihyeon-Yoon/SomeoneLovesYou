@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+
+import com.ssy.graduationwork.someonelovesyou.Object.HeartDTO;
+import com.ssy.graduationwork.someonelovesyou.Object.UserVO;
+import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroCallback;
+import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroClient;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,6 +44,16 @@ public class Heart extends Fragment {
     ArrayList<ListViewItemForHeart>  arraylist;
     EditText search;
 
+    //받은 하트
+    int heartNum;
+    //감정설정
+    ImageButton ib_emoticon,statusBtn;
+
+    final static String LOG = "ConnectionTEST";
+
+    private RetroClient retroClient;
+    UserVO gUser;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +72,37 @@ public class Heart extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(adapter);
         search=rootView.findViewById(R.id.editSearch2);
+
+        //이 부분이 하트 수 받아오기
+        retroClient=RetroClient.getInstance(getContext()).createBaseApi();
+
+        String receiver_id = "01050345566";//박보검
+        retroClient.getHeart(receiver_id, new RetroCallback() {
+
+            /*
+            응답 오류
+             */
+            @Override
+            public void onError(Throwable t) {
+                Log.d(LOG, "에러 : " + t.toString());
+            }
+
+            @Override
+            public void onSuccess(int code, Object receivedData) {
+                try {
+
+                    ArrayList<HeartDTO> res = (ArrayList<HeartDTO>)receivedData;
+                    heartNum = res.size();
+                    Log.d(LOG,   "성공! 받은 리스트 수 :  "+res.size() );
+                    //   Toast.makeText(getApplicationContext(),"성공! 받은 리스트 수 : " + res.size(),Toast.LENGTH_SHORT).show();
+                }catch(Exception e){}
+            }
+
+            @Override
+            public void onFailure(int code) {
+                Log.d(LOG,"실패");
+            }
+        });
 
 
         try {
@@ -81,8 +128,19 @@ public class Heart extends Fragment {
                 String date = temp[2];
                 String ampm = temp[3];
                 String time = temp[4];
+                if(name.equals("이보영")){
+                    for(int i=0; i<=heartNum; i++){
+                        Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
+                        adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                    }
+                } else {
+                    adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                }
 
-                adapter.addItem(phone, personImgResId, name, date, ampm, time);
+
+
+
+
 
             }
 
@@ -90,6 +148,8 @@ public class Heart extends Fragment {
         } catch(IOException e) {
             e.printStackTrace();
         }
+
+
 
         arraylist = new ArrayList<ListViewItemForHeart> ();
         arraylist.addAll(itemList);

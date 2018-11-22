@@ -6,6 +6,8 @@ import com.ssy.graduationwork.someonelovesyou.Object.HeartDTO;
 import com.ssy.graduationwork.someonelovesyou.Request.GetUserDTO;
 import com.ssy.graduationwork.someonelovesyou.Service.RetroBaseApiService;
 
+import java.util.List;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import okhttp3.ResponseBody;
@@ -87,6 +89,24 @@ public class RetroClient {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+    public void getHeart(String id, final RetroCallback callback) {
+        apiService.getHeart(id).enqueue(new Callback<List<HeartDTO>>() {
+
+            @Override
+            public void onResponse(Call<List<HeartDTO>> call, Response<List<HeartDTO>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.code(), response.body());
+                } else {
+                    callback.onFailure(response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<HeartDTO>> call, Throwable t) {
                 callback.onError(t);
             }
         });
