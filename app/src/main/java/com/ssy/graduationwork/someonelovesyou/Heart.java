@@ -1,6 +1,8 @@
 package com.ssy.graduationwork.someonelovesyou;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -28,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by YJH on 2018-07-17.
  */
@@ -54,6 +58,10 @@ public class Heart extends Fragment {
     private RetroClient retroClient;
     UserVO gUser;
 
+    Context context;
+    SharedPreferences sh_Pref;
+    String userID;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,7 +84,10 @@ public class Heart extends Fragment {
         //이 부분이 하트 수 받아오기
         retroClient=RetroClient.getInstance(getContext()).createBaseApi();
 
-        String receiver_id = "01050345566";//박보검
+        //서버에서 받은 유저 네임 보여주기
+        getSharedPreferenceUserInfo();
+
+        String receiver_id = userID;//이보영 01022345690 박보검 01050345566
         retroClient.getHeart(receiver_id, new RetroCallback() {
 
             /*
@@ -264,6 +275,14 @@ public class Heart extends Fragment {
         return rootView;
 }
 
+    public void getSharedPreferenceUserInfo() {
+        context = getActivity();
+        sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);
+        if(sh_Pref != null && sh_Pref.contains("userID")) {
+            userID = sh_Pref.getString("userID", "noID");
+        }
+
+    }
     @Override
     public void onPause() {
         super.onPause();

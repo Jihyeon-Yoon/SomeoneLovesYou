@@ -99,12 +99,15 @@ public class MainActivity extends AppCompatActivity
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
+        Intent intent=getIntent();
+        String id=intent.getStringExtra("id");
+
 
         retroClient = RetroClient.getInstance(this).createBaseApi();
 
         //서버에서 유저 정보 받아오기
         GetUserDTO dto = new GetUserDTO();
-        dto.setUserid("01022345690");
+        dto.setUserid(id);
 
         retroClient.getUSer(dto, new RetroCallback() {
 
