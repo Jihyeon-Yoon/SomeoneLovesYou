@@ -3,6 +3,7 @@ package com.ssy.graduationwork.someonelovesyou;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ssy.graduationwork.someonelovesyou.Object.HeartDTO;
+import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroCallback;
+import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroClient;
 
 import java.util.ArrayList;
 
@@ -55,8 +60,12 @@ public class ListViewAdapterForFriend extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
+        final  RetroClient retroClient;
         final String UserName;
         final Context context = parent.getContext();
+        final String LOG = "ConnectionTEST";
+        retroClient = RetroClient.getInstance(context).createBaseApi();
+        //retroClient = RetroClient.getInstance(this).createBaseApi();
 
         // listview_item layout을 inflate하여 convertView 참조 획득
         if(convertView == null) {
@@ -110,6 +119,33 @@ public class ListViewAdapterForFriend extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if(UserName.equals("박보검")){
+                    HeartDTO dto = new HeartDTO();
+                    dto.setSender("01022345690"); //이보영
+                    dto.setReceiver("01050345566"); //박보검
+                    retroClient.sendHeart(dto, new RetroCallback() {
+
+                        /*
+                        응답 오류
+                         */
+                        @Override
+                        public void onError(Throwable t) {
+                            Log.d(LOG, "에러 : " + t.toString());
+                        }
+
+                        @Override
+                        public void onSuccess(int code, Object receivedData) {
+                            try {
+                                Log.d(LOG, "성공");
+                                Toast.makeText(context.getApplicationContext(),"성공!",Toast.LENGTH_SHORT).show();
+                            }catch(Exception e){}
+                        }
+
+                        @Override
+                        public void onFailure(int code) {
+                            Log.d(LOG,"실패");
+                        }
+                    });
+
                     Toast.makeText(context.getApplicationContext(),"01050345566",Toast.LENGTH_SHORT).show();
                 }
                 Toast.makeText(context.getApplicationContext(),UserName+"님께 하트가 전송되었습니다",Toast.LENGTH_SHORT).show();

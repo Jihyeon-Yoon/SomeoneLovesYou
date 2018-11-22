@@ -25,5 +25,6 @@ public interface RetroBaseApiService {
     //회원가입
     @POST("user/get")
     Call<ResponseBody> getUser(@Body GetUserDTO dto);
+    @POST("user/send/heart")
     Call<ResponseBody> sendHeart(@Body HeartDTO dto);
 }
