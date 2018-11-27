@@ -84,7 +84,11 @@ public class Friend extends Fragment {
         //서버에서 받은 유저 네임 보여주기
         getSharedPreferenceUserInfo();
 
+        //이 부분이 하트 수 받아오기
+        retroClient=RetroClient.getInstance(getContext()).createBaseApi();
 
+       //서버에서 받은 유저 네임 보여주기
+        getSharedPreferenceUserInfo();
 
 
 

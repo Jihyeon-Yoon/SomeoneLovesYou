@@ -139,14 +139,30 @@ public class Heart extends Fragment {
                 String date = temp[2];
                 String ampm = temp[3];
                 String time = temp[4];
-                if(name.equals("이보영")){
-                    for(int i=0; i<=heartNum; i++){
-                        Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
+
+                //이보영 01022345690 박보검 01050345566
+                if(userID.equals("01022345690")) {
+                    if(name.equals("박보검")) {
+                        for(int i=0; i<heartNum; i++){
+                            Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
+                            adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                        }
+                    } else if(!name.equals("박보검") && !name.equals("이보영")) {
                         adapter.addItem(phone, personImgResId, name, date, ampm, time);
                     }
-                } else {
-                    adapter.addItem(phone, personImgResId, name, date, ampm, time);
+
+                } else if(userID.equals("01050345566")) {
+                    if(name.equals("이보영")) {
+                        for(int i=0; i<heartNum; i++){
+                            Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
+                            adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                        }
+                    } else if(!name.equals("이보영") && !name.equals("박보검")) {
+                        adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                    }
                 }
+
+
 
 
 
@@ -252,28 +268,28 @@ public class Heart extends Fragment {
 
 
         search.addTextChangedListener(new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        }
+            }
 
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-        }
+            }
 
-        @Override
-        public void afterTextChanged(Editable s) {
-            String searchText=search.getText().toString();
-            search(searchText);
+            @Override
+            public void afterTextChanged(Editable s) {
+                String searchText=search.getText().toString();
+                search(searchText);
 
-        }
-    });
+            }
+        });
 
 
 
         return rootView;
-}
+    }
 
     public void getSharedPreferenceUserInfo() {
         context = getActivity();
