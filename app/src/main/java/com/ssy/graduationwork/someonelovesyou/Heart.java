@@ -141,7 +141,7 @@ public class Heart extends Fragment {
                 String time = temp[4];
 
                 //이보영 01022345690 박보검 01050345566
-                if(userID.equals("01022345690")) {
+                if(receiver_id.equals("01022345690")) {
                     if(name.equals("박보검")) {
                         for(int i=0; i<heartNum; i++){
                             Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
@@ -151,7 +151,7 @@ public class Heart extends Fragment {
                         adapter.addItem(phone, personImgResId, name, date, ampm, time);
                     }
 
-                } else if(userID.equals("01050345566")) {
+                } else if(receiver_id.equals("01050345566")) {
                     if(name.equals("이보영")) {
                         for(int i=0; i<heartNum; i++){
                             Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
@@ -161,22 +161,12 @@ public class Heart extends Fragment {
                         adapter.addItem(phone, personImgResId, name, date, ampm, time);
                     }
                 }
-
-
-
-
-
-
-
-
             }
 
             br.close();
         } catch(IOException e) {
             e.printStackTrace();
         }
-
-
 
         arraylist = new ArrayList<ListViewItemForHeart> ();
         arraylist.addAll(itemList);

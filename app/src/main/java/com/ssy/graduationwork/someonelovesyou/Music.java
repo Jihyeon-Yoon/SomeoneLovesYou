@@ -17,6 +17,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import static android.content.Context.MODE_PRIVATE;
 
 
@@ -35,6 +40,11 @@ public class Music extends Fragment {
     TextView recommendTitle;
     TextView recommendSinger;
     ImageButton youtubeBtn;
+    String emotionResult;
+    String title;
+    String singer;
+    String linkAddress;
+    int count=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +73,6 @@ public class Music extends Fragment {
         recommendTitle = rootView.findViewById(R.id.tv_recommendTitle );
         recommendSinger = rootView.findViewById(R.id.tv_recommendSinger);
         youtubeBtn = rootView.findViewById(R.id.ib_youtube);
-
         getSharedPreferenceUserInfo();
         recommendMusic();
 
@@ -114,30 +123,82 @@ public class Music extends Fragment {
             userEmotionString = sh_Pref.getString("userEmotion", "noEmotion");
             userEmotion.setText(userEmotionString);
         }
-
     }
 
     private void recommendMusic() {
+        InputStream is=null;
+        try {
+
+            if(userEmotionString.equals("행복")){
+                is  = getResources().openRawResource(R.raw.music_e1);
+            }
+            else if(userEmotionString.equals("불안")){
+                is  = getResources().openRawResource(R.raw.music_e2);
+            }
+            else if(userEmotionString.equals("슬픔")){
+                is  = getResources().openRawResource(R.raw.music_e3);
+            }
+            else if(userEmotionString.equals("평안")){
+                is  = getResources().openRawResource(R.raw.music_e4);
+            }
+
+            //서버에 감정 업데이트되면 올릴것
+            is  = getResources().openRawResource(R.raw.music_e3);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+
+            String[] temp = new String[3];
+            int randomNum=(int)(Math.random()*100);//랜덤 추천
+
+            // temp 0: 제목, 1: 가수, 2: 링크
+            while ((br.readLine()) != null) { // 음악 사이의 개행(빈 줄 하나) 읽기
+                count++;
+                for(int i = 0; i < 3; i++) {
+                    temp[i] = br.readLine();
+                }
+                if(count==randomNum) {
+                    title = temp[0];
+                    singer = temp[1];
+                    linkAddress = temp[2];
+                }
+
+            }
+            br.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        recommendTitle.setText(title);
+        recommendSinger.setText(singer);
+
+
         if(userEmotionString.equals("행복")) {
             emoticon.setImageResource(R.drawable.emoticon_happy);
+            userEmotion.setText("행복");
+
         } else if(userEmotionString.equals("불안")) {
             emoticon.setImageResource(R.drawable.emoticon_confused);
+            userEmotion.setText("불안");
+
+
         } else if(userEmotionString.equals("슬픔")) {
             emoticon.setImageResource(R.drawable.emoticon_remorse);
+            userEmotion.setText("슬픔");
+
         } else if(userEmotionString.equals("평온")) {
             emoticon.setImageResource(R.drawable.emoticon_smiling);
+            userEmotion.setText("평온");
+
         } else {
             emoticon.setImageResource(R.drawable.emoticon_silent);
+
         }
 
-        recommendTitle.setText("Title");
-        recommendSinger.setText("Singer");
+
         youtubeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("www.google.com"));
+                        Uri.parse(linkAddress));
 
                 v.getContext().startActivity(intent);
 
