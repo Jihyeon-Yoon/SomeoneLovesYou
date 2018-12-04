@@ -118,11 +118,11 @@ public class Friend extends Fragment {
             InputStream is  = getResources().openRawResource(R.raw.friend);
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
-            String[] temp = new String[3];
-            // temp 0:폰번호 1: 이미지이름, 2: 이름, 3: 상태
+            String[] temp = new String[4];
+            // temp 0:폰번호 1: 이미지이름, 2: 이름, 3: 상태  4:결과
             while ((br.readLine()) != null) { // 책 사이의 개행(빈 줄 하나) 읽기
 
-                for(int i = 0; i < 3; i++) {
+                for(int i = 0; i < 4; i++) {
                     temp[i] = br.readLine();
                 }
 
@@ -135,8 +135,9 @@ public class Friend extends Fragment {
 
                 String name = temp[1];
                 String state = temp[2];
+                String result=temp[3];
 
-                adapter.addItem(phone, personImgResId, name, state);
+                adapter.addItem(phone, personImgResId, name, state,result);
 
             }
 

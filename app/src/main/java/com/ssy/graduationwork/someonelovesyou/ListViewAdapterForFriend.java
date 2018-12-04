@@ -75,18 +75,15 @@ public class ListViewAdapterForFriend extends BaseAdapter {
             convertView = inflater.inflate(R.layout.lv_friend_item, parent, false);
         }
 
-
-
-
-
         // 화면에 표시될 View(layout이 inflate됨)로 부터 위젯에 대한 참조 획득
         ImageView personImageView = convertView.findViewById(R.id.iv_person);
+        ImageView emoticon=convertView.findViewById(R.id.iv_emoticon);
         TextView nameTextView = convertView.findViewById(R.id.tv_name);
         TextView stateTextView = convertView.findViewById(R.id.tv_state);
         //listItem=convertView.findViewById(R.id.listView);
-        ImageButton emoticon, send_name, no_nameBtn, send_music;
+        ImageButton  send_name, no_nameBtn, send_music;
 
-        emoticon=convertView.findViewById(R.id.iv_emoticon);
+
         send_name=convertView.findViewById(R.id.iv_send_name);
         no_nameBtn=convertView.findViewById(R.id.iv_send_noname);
         send_music=convertView.findViewById(R.id.iv_music);
@@ -104,6 +101,17 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         personImageView.setImageResource(listViewItem.getPersonImgResId());
         nameTextView.setText(listViewItem.getName());
         stateTextView.setText(listViewItem.getState());
+        String result=listViewItem.getResult();
+
+        if(result.equals("행복")){
+            emoticon.setImageResource(R.drawable.emoticon_happy);
+        }
+        else if(result.equals("불안")){
+            emoticon.setImageResource(R.drawable.emoticon_fear);
+        }
+        else if(result.equals("슬픔")){
+            emoticon.setImageResource(R.drawable.emoticon_disapproval);
+        }
 
        /* emoticon.setFocusable(false);
         send_name.setFocusable(false);
@@ -218,13 +226,14 @@ public class ListViewAdapterForFriend extends BaseAdapter {
 
     // 아이템 데이터 추가를 위한 함수, 개발자가 원하는대로 작성 가능
     // temp 0:폰번호 1: 이미지이름, 2: 이름, 3: 상태
-    public void addItem(String phone, int personImgResId, String name, String state) {
+    public void addItem(String phone, int personImgResId, String name, String state, String result) {
         ListViewItemForFriend item = new ListViewItemForFriend();
 
         item.setPhone(phone);
         item.setPersonImgResId(personImgResId);
         item.setName(name);
         item.setState(state);
+        item.setResult(result);
 
 
         listViewItemList.add(item);

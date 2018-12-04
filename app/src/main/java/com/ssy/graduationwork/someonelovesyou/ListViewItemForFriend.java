@@ -11,6 +11,7 @@ public class ListViewItemForFriend {
     private int personImgResId;
     private String name;
     private String state;
+    private String result;
 
     public void setPhone(String phone) { this.phone = phone; }
     public void setPersonImgResId(int personImgResId) { this.personImgResId = personImgResId; }
@@ -19,6 +20,9 @@ public class ListViewItemForFriend {
     }
     public void setState(String state) {
         this.state = state;
+    }
+    public void setResult(String result) {
+        this.result = result;
     }
 
 
@@ -34,6 +38,9 @@ public class ListViewItemForFriend {
     }
     public String getState() {
         return state;
+    }
+    public String getResult() {
+        return result;
     }
 
 
