@@ -101,7 +101,8 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         personImageView.setImageResource(listViewItem.getPersonImgResId());
         nameTextView.setText(listViewItem.getName());
         stateTextView.setText(listViewItem.getState());
-        String result=listViewItem.getResult();
+        String result="";
+        result=listViewItem.getResult();
 
         if(result.equals("행복")){
             emoticon.setImageResource(R.drawable.emoticon_happy);
@@ -110,7 +111,9 @@ public class ListViewAdapterForFriend extends BaseAdapter {
             emoticon.setImageResource(R.drawable.emoticon_fear);
         }
         else if(result.equals("슬픔")){
-            emoticon.setImageResource(R.drawable.emoticon_disapproval);
+            emoticon.setImageResource(R.drawable.emoticon_remorse);
+        }else if(result.equals("평온")){
+            emoticon.setImageResource(R.drawable.emoticon_silent);
         }
 
        /* emoticon.setFocusable(false);
@@ -128,7 +131,7 @@ public class ListViewAdapterForFriend extends BaseAdapter {
         send_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(UserName.equals("박보검")){
+                if(UserName.equals("박보검")){//이보영 -> 박보검
                     String receiver_id = "01050345566";
                     HeartDTO dto = new HeartDTO();
                     dto.setSender("01022345690"); //이보영
@@ -183,6 +186,63 @@ public class ListViewAdapterForFriend extends BaseAdapter {
 
                     Toast.makeText(context.getApplicationContext(),"01050345566",Toast.LENGTH_SHORT).show();
                 }
+               else if(UserName.equals("이보영")){ //박보검 -> 이보영
+                    String receiver_id = "01022345690";
+                    HeartDTO dto = new HeartDTO();
+                    dto.setReceiver("01022345690"); //이보영
+                    dto.setSender("01050345566"); //박보검
+                    retroClient.sendHeart(dto, new RetroCallback() {
+
+                        /*
+                        응답 오류
+                         */
+                        @Override
+                        public void onError(Throwable t) {
+                            Log.d(LOG, "에러 : " + t.toString());
+                        }
+
+                        @Override
+                        public void onSuccess(int code, Object receivedData) {
+                            try {
+                                Log.d(LOG, "성공");
+                                Toast.makeText(context.getApplicationContext(),"성공!",Toast.LENGTH_SHORT).show();
+                            }catch(Exception e){}
+                        }
+
+                        @Override
+                        public void onFailure(int code) {
+                            Log.d(LOG,"실패");
+                        }
+                    });
+                    retroClient.getHeart(receiver_id, new RetroCallback() {
+
+                        /*
+                        응답 오류
+                         */
+                        @Override
+                        public void onError(Throwable t) {
+                            Log.d(LOG, "에러 : " + t.toString());
+                        }
+
+                        @Override
+                        public void onSuccess(int code, Object receivedData) {
+                            try {
+                                Log.d(LOG, "성공");
+                                ArrayList<HeartDTO> res = (ArrayList<HeartDTO>)receivedData;
+                                Toast.makeText(context.getApplicationContext(),"성공! 받은 리스트 수 : " + res.size(),Toast.LENGTH_SHORT).show();
+                            }catch(Exception e){}
+                        }
+
+                        @Override
+                        public void onFailure(int code) {
+                            Log.d(LOG,"실패");
+                        }
+                    });
+
+                    Toast.makeText(context.getApplicationContext(),"01022345690",Toast.LENGTH_SHORT).show();
+                }
+
+
                 Toast.makeText(context.getApplicationContext(),UserName+"님께 하트가 전송되었습니다",Toast.LENGTH_SHORT).show();
             }
         });

@@ -3,6 +3,7 @@ package com.ssy.graduationwork.someonelovesyou;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,14 +47,19 @@ public class ListViewAdapterForHeart extends BaseAdapter {
         final int pos = position;
         final Context context = parent.getContext();
         final String UserName;
+        SharedPreferences sh_Pref;
+        String state="";
+        String state2;
+        String result="";
+        String stringTemp="";
 
         // listview_item layout을 inflate하여 convertView 참조 획득
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.lv_heart_item, parent, false);
         }
-        ImageButton emoticon, send_name, no_nameBtn, send_music;
-
+        ImageButton  send_name, no_nameBtn, send_music;
+        ImageView emoticon;
         emoticon=convertView.findViewById(R.id.tv_emoticon);
         send_name=convertView.findViewById(R.id.tv_send_name);
         no_nameBtn=convertView.findViewById(R.id.tv_send_noname);
@@ -69,6 +75,7 @@ public class ListViewAdapterForHeart extends BaseAdapter {
         // Data set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         ListViewItemForHeart listViewItem = listViewItemList.get(position);
 
+
         // 아이템 내 각 위젯에 데이터 반영
         personImageView.setImageResource(listViewItem.getPersonImgResId());
         nameTextView.setText(listViewItem.getName());
@@ -77,8 +84,60 @@ public class ListViewAdapterForHeart extends BaseAdapter {
         timeTextView.setText(listViewItem.getTime());
         nameTextView.append("님이 당신을 생각하고 있어요");
 
-         UserName=listViewItem.getName().toString();
+
+        sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);
+        if(sh_Pref != null && sh_Pref.contains("userName")&&sh_Pref.contains("userState")&&sh_Pref.contains("userEmotion")) {
+            state = sh_Pref.getString("userState", "nonstate");
+            state2 = sh_Pref.getString("userState2", "nonstate");
+
+            stringTemp = sh_Pref.getString("userName2", "noname");
+            result = sh_Pref.getString("userEmotion2", "noemotion");
+            Log.d("profile5", "성공"+stringTemp+state+result);
+            //userName.setText(stringTemp);
+        }
+
+
+
+
+            if (stringTemp.equals("이보영")) {
+
+                if (result.equals("행복")) {
+                    emoticon.setImageResource(R.drawable.emoticon_happy);
+                } else if (result.equals("불안")) {
+                    emoticon.setImageResource(R.drawable.emoticon_fear);
+                } else if (result.equals("슬픔")) {
+                    emoticon.setImageResource(R.drawable.emoticon_remorse);
+                } else if (result.equals("평온")) {
+                    emoticon.setImageResource(R.drawable.emoticon_silent);
+                }
+            }
+
+        if (stringTemp.equals("박보검")) {
+
+            if (result.equals("행복")) {
+                emoticon.setImageResource(R.drawable.emoticon_happy);
+            } else if (result.equals("불안")) {
+                emoticon.setImageResource(R.drawable.emoticon_fear);
+            } else if (result.equals("슬픔")) {
+                emoticon.setImageResource(R.drawable.emoticon_remorse);
+            } else if (result.equals("평온")) {
+                emoticon.setImageResource(R.drawable.emoticon_silent);
+            }
+        }
+
+        UserName=listViewItem.getName().toString();
         final String Phone=listViewItem.getPhone();
+        if(UserName.equals("정우성")){
+            emoticon.setImageResource(R.drawable.emoticon_fear);
+        }
+        else if(UserName.equals("문채원")){
+            emoticon.setImageResource(R.drawable.emoticon_happy);
+        }
+        else if(UserName.equals("신민아")){
+            emoticon.setImageResource(R.drawable.emoticon_happy);
+        }
+
+
 
 
 
@@ -138,6 +197,8 @@ public class ListViewAdapterForHeart extends BaseAdapter {
 
         listViewItemList.add(item);
     }
+
+
 
 
 }

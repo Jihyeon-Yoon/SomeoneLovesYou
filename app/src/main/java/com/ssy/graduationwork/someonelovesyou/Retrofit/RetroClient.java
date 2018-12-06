@@ -112,4 +112,25 @@ public class RetroClient {
         });
     }
 
+    public void updateProfile(String id, String profile, final RetroCallback callback) {
+        apiService.updateProfile(id,profile).enqueue(new Callback<ResponseBody>() {
+
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.code(), response.body());
+                } else {
+                    callback.onFailure(response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+
+
 }

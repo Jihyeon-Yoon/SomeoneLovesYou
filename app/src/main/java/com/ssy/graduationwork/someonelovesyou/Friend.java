@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 import com.kakao.usermgmt.response.model.User;
 import com.ssy.graduationwork.someonelovesyou.Object.HeartDTO;
 import com.ssy.graduationwork.someonelovesyou.Object.UserVO;
+import com.ssy.graduationwork.someonelovesyou.Request.GetUserDTO;
 import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroCallback;
 import com.ssy.graduationwork.someonelovesyou.Retrofit.RetroClient;
 
@@ -38,7 +41,12 @@ import java.util.Comparator;
 import android.content.SharedPreferences;
 import android.widget.EditText;
 
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
+
 import static android.content.Context.MODE_PRIVATE;
+import static com.ssy.graduationwork.someonelovesyou.MainActivity.LOG;
 
 /**
  * Created by YJH on 2018-07-17.
@@ -52,6 +60,8 @@ public class Friend extends Fragment {
     UserVO gUser;
     ListView listView;
     ListViewAdapterForFriend adapter;
+    static public int emotionNum;
+
 
     ArrayList<ListViewItemForFriend> itemList;
     //itemList를 복사할 List 선언
@@ -62,15 +72,59 @@ public class Friend extends Fragment {
 
    // TextView
     TextView userName;
+    public static ImageView iv_emoticon;
+    public static TextView StateTv;
     String stringTemp;
+    String state;
+    String result;
+    String result2, result3;
+
+    String userState,userEmotion;
+
+
+    ImageView profile;
 
     //감정설정
     ImageButton ib_emoticon,statusBtn;
 
 
+   @Override
+/*    public void onResume() {
+       context = getActivity();
+       sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);//이름
+       if(sh_Pref != null && sh_Pref.contains("userName")) {
+           stringTemp = sh_Pref.getString("userName", "noname");
+           userName.setText(stringTemp);
+       }
+
+       sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);//상태메세지 & 감정결과
+       if(sh_Pref != null && sh_Pref.contains("userState")&& sh_Pref.contains("userEmotion")) {
+           Log.d("profile4", "성공" + stringTemp + state + result);
+           state = sh_Pref.getString("userState", "nonstate");
+           result = sh_Pref.getString("userEmotion", "noemotion");
+           result2 = state;
+           result3 = result;
 
 
-    @Override
+           if (stringTemp.equals("이보영")) {
+               StateTv.setText(state);
+               if (result.equals("행복")) {
+                   iv_emoticon.setImageResource(R.drawable.emoticon_happy);
+               } else if (result.equals("불안")) {
+                   iv_emoticon.setImageResource(R.drawable.emoticon_fear);
+               } else if (result.equals("슬픔")) {
+                   iv_emoticon.setImageResource(R.drawable.emoticon_disapproval);
+               } else if (result.equals("평온")) {
+                   iv_emoticon.setImageResource(R.drawable.emoticon_silent);
+               }
+
+
+           }
+       }
+        super.onResume();
+    }*/
+
+
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -78,14 +132,18 @@ public class Friend extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_friend, null);
         statusBtn=rootView.findViewById(R.id.ib_edit);
 
+        iv_emoticon=rootView.findViewById(R.id.iv_emoticon);
         userName=rootView.findViewById(R.id.tv_name);
       //  userName.setText(gUser.getUsername());
+
+        StateTv=rootView.findViewById(R.id.tv_state);
+
+        profile=rootView.findViewById(R.id.iv_me);
 
         //서버에서 받은 유저 네임 보여주기
         getSharedPreferenceUserInfo();
 
-        //이 부분이 하트 수 받아오기
-        retroClient=RetroClient.getInstance(getContext()).createBaseApi();
+
 
        //서버에서 받은 유저 네임 보여주기
         getSharedPreferenceUserInfo();
@@ -112,7 +170,7 @@ public class Friend extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-
+        getSharedPreferenceUserInfo();
 
         try {
             InputStream is  = getResources().openRawResource(R.raw.friend);
@@ -135,9 +193,25 @@ public class Friend extends Fragment {
 
                 String name = temp[1];
                 String state = temp[2];
-                String result=temp[3];
+                final String result=temp[3];
+                if((stringTemp.equals("박보검"))&&(name.equals("박보검")))  {
+                     continue;
+                }else if((stringTemp.equals("이보영"))&&(name.equals("이보영"))){
+                    continue;
+                }
+                else if((stringTemp.equals("이보영"))&&(name.equals("박보검"))){//이보영 화면에서 박보검 상태 메세지
 
-                adapter.addItem(phone, personImgResId, name, state,result);
+                    adapter.addItem(phone, personImgResId, name, result2,result3);
+            }
+            else if((stringTemp.equals("박보검"))&&(name.equals("이보영"))){
+
+
+                    adapter.addItem(phone, personImgResId, name, result2,result3);
+                }
+
+                else{
+                    adapter.addItem(phone, personImgResId, name, state,result);
+                }
 
             }
 
@@ -156,12 +230,23 @@ public class Friend extends Fragment {
         arraylist = new ArrayList<ListViewItemForFriend>();
         arraylist.addAll(itemList);
 
+ /*       final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //지연시키길 원하는 밀리초 뒤에 동작         Intent intent=getIntent();
+                String getMessage=getActivity().getIntent().getExtras().getString("stateMessage","기본값");
+                StateTv.setText(getMessage);
+
+            }
+        }, 50000 );*/
+
+
         statusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), PopupActivity.class);
                 startActivity(intent);
-
     }
 });
 
@@ -192,13 +277,57 @@ public class Friend extends Fragment {
         return rootView;
     }
 
+
     public void getSharedPreferenceUserInfo() {
         context = getActivity();
-        sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);
+        sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);//이름
         if(sh_Pref != null && sh_Pref.contains("userName")) {
             stringTemp = sh_Pref.getString("userName", "noname");
             userName.setText(stringTemp);
+
         }
+
+        sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);//상태메세지 & 감정결과
+        if(sh_Pref != null && sh_Pref.contains("userState")&& sh_Pref.contains("userEmotion")) {
+            Log.d("profile3", "성공"+stringTemp+state+result);
+            state = sh_Pref.getString("userState", "nonstate");
+            result = sh_Pref.getString("userEmotion", "noemotion");
+            result2=sh_Pref.getString("userState2", "nonstate");
+            result3=sh_Pref.getString("userEmotion2", "noemotion");
+
+
+            if(stringTemp.equals("이보영")){
+                StateTv.setText(state);
+                if(result.equals("행복")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_happy);
+                }else if(result.equals("불안")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_fear);
+                }else if(result.equals("슬픔")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_disapproval);
+                }else if(result.equals("평온")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_silent);
+                }
+
+
+            }
+            else if(stringTemp.equals("박보검")){
+                StateTv.setText(state);
+                if(result.equals("행복")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_happy);
+                }else if(result.equals("불안")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_fear);
+                }else if(result.equals("슬픔")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_disapproval);
+                }else if(result.equals("평온")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_silent);
+                }
+                profile.setImageResource(R.drawable.ph00000003);
+            }
+
+        }
+
+
+
 
     }
 

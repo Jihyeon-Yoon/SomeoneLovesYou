@@ -44,12 +44,14 @@ import okhttp3.ResponseBody;
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
          private RetroClient retroClient;
+    private RetroClient retroClient2;
      final static String LOG = "MainActivity";
      public UserVO user;
 
      SharedPreferences sh_Pref;
      SharedPreferences.Editor toEdit;
      String userID, userName, userState, userEmotion, userPWD;
+    String userID2, userName2, userState2, userEmotion2, userPWD2;
 
     @Override
     protected void onResume() {
@@ -65,6 +67,11 @@ public class MainActivity extends AppCompatActivity
         toEdit.putString("userState", userState);
         toEdit.putString("userEmotion", userEmotion);
         toEdit.putString("userPWD", userPWD);
+        toEdit.putString("userID2", userID2);
+        toEdit.putString("userName2", userName2);
+        toEdit.putString("userState2", userState2);
+        toEdit.putString("userEmotion2", userEmotion2);
+        toEdit.putString("userPWD2", userPWD2);
 
         toEdit.commit();
     }
@@ -101,69 +108,267 @@ public class MainActivity extends AppCompatActivity
 
         Intent intent=getIntent();
         String id=intent.getStringExtra("id");
+        Log.d("테스트", id);
 
 
         retroClient = RetroClient.getInstance(this).createBaseApi();
+        retroClient2 = RetroClient.getInstance(this).createBaseApi();
 
         //서버에서 유저 정보 받아오기
         GetUserDTO dto = new GetUserDTO();
+        GetUserDTO dto2 = new GetUserDTO();
         dto.setUserid(id);
 
-        retroClient.getUSer(dto, new RetroCallback() {
+        if(id.equals("01022345690")){
+            dto2.setUserid("01050345566");
+        }else if(id.equals("01050345566")){
+            dto2.setUserid("01022345690");
+        }
 
-            /*
-            응답 오류
-             */
-            @Override
-            public void onError(Throwable t) {
-                Log.d(LOG, "에러 : " + t.toString());
-            }
 
-            @Override
-            public void onSuccess(int code, Object receivedData) {
-                try {
-                    Log.d(LOG, "성공");
+//이보영으로 로그인 한 경우
 
-                    ResponseBody body = ((ResponseBody) receivedData);
-                    String responseJSON = body.string();
-                    //responseJSON JSON을 분석해서 처리하는 코드 작성.
+        if(id.equals("01022345690")){
+            retroClient.getUSer(dto, new RetroCallback() {
+
+                /*
+                응답 오류
+                 */
+                @Override
+                public void onError(Throwable t) {
+                    Log.d(LOG, "에러 : " + t.toString());
+                }
+
+                @Override
+                public void onSuccess(int code, Object receivedData) {
+                    try {
+                        Log.d(LOG, "성공");
+
+                        ResponseBody body = ((ResponseBody) receivedData);
+                        String responseJSON = body.string();
+                        //responseJSON JSON을 분석해서 처리하는 코드 작성.
 
                             /*
                             로그인인 경우에는 result로 토큰을 받음
                             이 토큰은 사용자를 인증하는데 사용되므로 반드시 저장해야함. Preference 사용하면 좋을듯?
                              */
-                    Log.d(LOG,responseJSON);
-                    JSONObject jObj1 = new JSONObject(responseJSON);
-                    JSONObject jObj2 = jObj1.getJSONObject("results");
-                    userID = jObj2.getString("userid");
-                    userName = jObj2.getString("username");
-                    userState = jObj2.getString("state");
-                    userEmotion = jObj2.getString("emotion");
-                    userPWD = jObj2.getString("userpwd");
+                        Log.d(LOG,responseJSON);
+                        JSONObject jObj1 = new JSONObject(responseJSON);
+                        JSONObject jObj2 = jObj1.getJSONObject("results");
+                        userID = jObj2.getString("userid");
+                        userName = jObj2.getString("username");
+                        userState = jObj2.getString("state");
+                        userEmotion = jObj2.getString("emotion");
+                        userPWD = jObj2.getString("userpwd");
 
-                    UserVO user = new UserVO(userID,userPWD,userState,userEmotion,userName);
+                        UserVO user = new UserVO(userID,userPWD,userState,userEmotion,userName);
 
-                    //String temp = userID + " " + userPWD + " " + userState + " " + userEmotion + " " + userName;
+                        //String temp = userID + " " + userPWD + " " + userState + " " + userEmotion + " " + userName;
 
-                    //Log.d("userTest",username);
+                        //Log.d("userTest",username);
 
-                    //Toast.makeText(getApplicationContext(),temp,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),temp,Toast.LENGTH_LONG).show();
 
-                    //서버에서 받은 유저 정보 저장
-                    setSharedPreferncesUserInfo();
+                        //서버에서 받은 유저 정보 저장
+                       setSharedPreferncesUserInfo();
 
-                    loadFragment(new Friend());
+                       // loadFragment(new Friend());
 
 
 
-                }catch(Exception e){}
-            }
+                    }catch(Exception e){}
+                }
 
-            @Override
-            public void onFailure(int code) {
-                Log.d(LOG,"실패");
-            }
-        });
+                @Override
+                public void onFailure(int code) {
+                    Log.d(LOG,"실패");
+                }
+            });
+
+            retroClient2.getUSer(dto2, new RetroCallback() {
+
+                /*
+                응답 오류
+                 */
+                @Override
+                public void onError(Throwable t) {
+                    Log.d(LOG, "에러 : " + t.toString());
+                }
+
+                @Override
+                public void onSuccess(int code, Object receivedData) {
+                    try {
+                        Log.d(LOG, "성공");
+
+                        ResponseBody body = ((ResponseBody) receivedData);
+                        String responseJSON = body.string();
+                        //responseJSON JSON을 분석해서 처리하는 코드 작성.
+
+                            /*
+                            로그인인 경우에는 result로 토큰을 받음
+                            이 토큰은 사용자를 인증하는데 사용되므로 반드시 저장해야함. Preference 사용하면 좋을듯?
+                             */
+                        Log.d(LOG,responseJSON);
+                        JSONObject jObj1 = new JSONObject(responseJSON);
+                        JSONObject jObj2 = jObj1.getJSONObject("results");
+                        userID2 = jObj2.getString("userid");
+                        userName2 = jObj2.getString("username");
+                        userState2 = jObj2.getString("state");
+                        userEmotion2 = jObj2.getString("emotion");
+                        userPWD2 = jObj2.getString("userpwd");
+
+                        UserVO user2 = new UserVO(userID2,userPWD2,userState2,userEmotion2,userName2);
+
+                        //String temp = userID + " " + userPWD + " " + userState + " " + userEmotion + " " + userName;
+
+                        //Log.d("userTest",username);
+
+                        //Toast.makeText(getApplicationContext(),temp,Toast.LENGTH_LONG).show();
+
+                        //서버에서 받은 유저 정보 저장
+                           setSharedPreferncesUserInfo();
+
+                           loadFragment(new Friend());
+
+
+
+                    }catch(Exception e){}
+                }
+
+                @Override
+                public void onFailure(int code) {
+                    Log.d(LOG,"실패");
+                }
+            });
+        }
+
+        //박보검으로 로그인 한 경우
+        else if(id.equals("01050345566")){
+
+            retroClient.getUSer(dto, new RetroCallback() {
+
+                /*
+                응답 오류
+                 */
+                @Override
+                public void onError(Throwable t) {
+                    Log.d(LOG, "에러 : " + t.toString());
+                }
+
+                @Override
+                public void onSuccess(int code, Object receivedData) {
+                    try {
+                        Log.d(LOG, "성공");
+
+                        ResponseBody body = ((ResponseBody) receivedData);
+                        String responseJSON = body.string();
+                        //responseJSON JSON을 분석해서 처리하는 코드 작성.
+
+                            /*
+                            로그인인 경우에는 result로 토큰을 받음
+                            이 토큰은 사용자를 인증하는데 사용되므로 반드시 저장해야함. Preference 사용하면 좋을듯?
+                             */
+                        Log.d(LOG,responseJSON);
+                        JSONObject jObj1 = new JSONObject(responseJSON);
+                        JSONObject jObj2 = jObj1.getJSONObject("results");
+                        userID = jObj2.getString("userid");
+                        userName = jObj2.getString("username");
+                        userState = jObj2.getString("state");
+                        userEmotion = jObj2.getString("emotion");
+                        userPWD = jObj2.getString("userpwd");
+
+                        UserVO user = new UserVO(userID,userPWD,userState,userEmotion,userName);
+
+                        //String temp = userID + " " + userPWD + " " + userState + " " + userEmotion + " " + userName;
+
+                        //Log.d("userTest",username);
+
+                        //Toast.makeText(getApplicationContext(),temp,Toast.LENGTH_LONG).show();
+
+                        //서버에서 받은 유저 정보 저장
+                        setSharedPreferncesUserInfo();
+
+                        // loadFragment(new Friend());
+
+
+
+                    }catch(Exception e){}
+                }
+
+                @Override
+                public void onFailure(int code) {
+                    Log.d(LOG,"실패");
+                }
+            });
+
+            retroClient2.getUSer(dto2, new RetroCallback() {
+
+                /*
+                응답 오류
+                 */
+                @Override
+                public void onError(Throwable t) {
+                    Log.d(LOG, "에러 : " + t.toString());
+                }
+
+                @Override
+                public void onSuccess(int code, Object receivedData) {
+                    try {
+                        Log.d(LOG, "성공");
+
+                        ResponseBody body = ((ResponseBody) receivedData);
+                        String responseJSON = body.string();
+                        //responseJSON JSON을 분석해서 처리하는 코드 작성.
+
+                            /*
+                            로그인인 경우에는 result로 토큰을 받음
+                            이 토큰은 사용자를 인증하는데 사용되므로 반드시 저장해야함. Preference 사용하면 좋을듯?
+                             */
+                        Log.d(LOG,responseJSON);
+                        JSONObject jObj1 = new JSONObject(responseJSON);
+                        JSONObject jObj2 = jObj1.getJSONObject("results");
+                        userID2 = jObj2.getString("userid");
+                        userName2 = jObj2.getString("username");
+                        userState2 = jObj2.getString("state");
+                        userEmotion2 = jObj2.getString("emotion");
+                        userPWD2 = jObj2.getString("userpwd");
+
+                        UserVO user2 = new UserVO(userID2,userPWD2,userState2,userEmotion2,userName2);
+
+                        //String temp = userID + " " + userPWD + " " + userState + " " + userEmotion + " " + userName;
+
+                        //Log.d("userTest",username);
+
+                        //Toast.makeText(getApplicationContext(),temp,Toast.LENGTH_LONG).show();
+
+                        //서버에서 받은 유저 정보 저장
+                        setSharedPreferncesUserInfo();
+
+                        loadFragment(new Friend());
+
+
+
+                    }catch(Exception e){}
+                }
+
+                @Override
+                public void onFailure(int code) {
+                    Log.d(LOG,"실패");
+                }
+            });
+
+
+
+
+        }
+
+
+
+
+
+
+
+
 
     }
 

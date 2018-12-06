@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/friendFragment">
 
     <EditText
         android:id="@+id/editSearch"
@@ -85,7 +86,7 @@
                 android:id="@+id/tv_state"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="엄마라는 존재의 무거움.."
+                android:text="기본 상태메세지"
                 android:textSize="14dp"
                 android:padding="5dp"
                 android:layout_weight="1"

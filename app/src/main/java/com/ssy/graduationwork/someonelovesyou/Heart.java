@@ -87,7 +87,7 @@ public class Heart extends Fragment {
         //서버에서 받은 유저 네임 보여주기
         getSharedPreferenceUserInfo();
 
-        String receiver_id = userID;//이보영 01022345690 박보검 01050345566
+       final String receiver_id = userID;//이보영 01022345690 박보검 01050345566
         retroClient.getHeart(receiver_id, new RetroCallback() {
 
             /*
@@ -101,12 +101,105 @@ public class Heart extends Fragment {
             @Override
             public void onSuccess(int code, Object receivedData) {
                 try {
-
+                    arraylist = new ArrayList<ListViewItemForHeart> ();
                     ArrayList<HeartDTO> res = (ArrayList<HeartDTO>)receivedData;
                     heartNum = res.size();
                     Log.d(LOG,   "성공! 받은 리스트 수 :  "+res.size() );
                     //   Toast.makeText(getApplicationContext(),"성공! 받은 리스트 수 : " + res.size(),Toast.LENGTH_SHORT).show();
-                }catch(Exception e){}
+
+
+
+                    try {
+                        InputStream is  = getResources().openRawResource(R.raw.heart);
+                        BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+
+                        String[] temp = new String[5];
+                        // temp 0:폰번호 1: 폰번호(이미지이름), 2: 이름, 3: 날짜, 4: 오전/후, 5: 시간
+                        while ((br.readLine()) != null) { // 책 사이의 개행(빈 줄 하나) 읽기
+
+                            for(int i = 0; i < 5; i++) {
+                                temp[i] = br.readLine();
+                            }
+
+                            String phone = temp[0];
+
+                            //이미지이름==폰번호
+                            String personImgName = "ph" + temp[0];
+
+                            int personImgResId = getResources().getIdentifier(personImgName, "drawable", "com.ssy.graduationwork.someonelovesyou");
+
+                            String name = temp[1];
+                            String date = temp[2];
+                            String ampm = temp[3];
+                            String time = temp[4];
+
+                            //이보영 01022345690 박보검 01050345566
+                            if(receiver_id.equals("01022345690")) {
+                                if(name.equals("박보검")) {
+                                    for(int i=0; i<heartNum; i++){
+                                        Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
+                                        adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                                        arraylist = new ArrayList<ListViewItemForHeart> ();
+                                        arraylist.addAll(itemList);
+                                    }
+                                } else if(!name.equals("박보검") && !name.equals("이보영")) {
+                                    adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                                    arraylist = new ArrayList<ListViewItemForHeart> ();
+                                    arraylist.addAll(itemList);
+                                }
+
+                            } else if(receiver_id.equals("01050345566")) {
+                                if(name.equals("이보영")) {
+                                    for(int i=0; i<heartNum; i++){
+                                        Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
+                                        adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                                        arraylist = new ArrayList<ListViewItemForHeart> ();
+                                        arraylist.addAll(itemList);
+                                    }
+                                } else if(!name.equals("이보영") && !name.equals("박보검")) {
+                                    adapter.addItem(phone, personImgResId, name, date, ampm, time);
+                                    arraylist = new ArrayList<ListViewItemForHeart> ();
+                                    arraylist.addAll(itemList);
+                                }
+                            }
+                        }
+
+                        arraylist = new ArrayList<ListViewItemForHeart> ();
+                        arraylist.addAll(itemList);
+                        br.close();
+                    } catch(IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                catch(Exception e){}
             }
 
             @Override
@@ -116,60 +209,17 @@ public class Heart extends Fragment {
         });
 
 
-        try {
-            InputStream is  = getResources().openRawResource(R.raw.heart);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
-            String[] temp = new String[5];
-            // temp 0:폰번호 1: 폰번호(이미지이름), 2: 이름, 3: 날짜, 4: 오전/후, 5: 시간
-            while ((br.readLine()) != null) { // 책 사이의 개행(빈 줄 하나) 읽기
 
-                for(int i = 0; i < 5; i++) {
-                    temp[i] = br.readLine();
-                }
 
-                String phone = temp[0];
 
-                //이미지이름==폰번호
-                String personImgName = "ph" + temp[0];
 
-                int personImgResId = getResources().getIdentifier(personImgName, "drawable", "com.ssy.graduationwork.someonelovesyou");
 
-                String name = temp[1];
-                String date = temp[2];
-                String ampm = temp[3];
-                String time = temp[4];
 
-                //이보영 01022345690 박보검 01050345566
-                if(receiver_id.equals("01022345690")) {
-                    if(name.equals("박보검")) {
-                        for(int i=0; i<heartNum; i++){
-                            Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
-                            adapter.addItem(phone, personImgResId, name, date, ampm, time);
-                        }
-                    } else if(!name.equals("박보검") && !name.equals("이보영")) {
-                        adapter.addItem(phone, personImgResId, name, date, ampm, time);
-                    }
 
-                } else if(receiver_id.equals("01050345566")) {
-                    if(name.equals("이보영")) {
-                        for(int i=0; i<heartNum; i++){
-                            Log.d(LOG,   "성공! 받은 리스트 수 테스트 :  "+heartNum );
-                            adapter.addItem(phone, personImgResId, name, date, ampm, time);
-                        }
-                    } else if(!name.equals("이보영") && !name.equals("박보검")) {
-                        adapter.addItem(phone, personImgResId, name, date, ampm, time);
-                    }
-                }
-            }
 
-            br.close();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
 
-        arraylist = new ArrayList<ListViewItemForHeart> ();
-        arraylist.addAll(itemList);
+
 
 
         // 시간순으로 정렬하는 버튼, 버튼을 누르면 시간순으로 정렬한다.

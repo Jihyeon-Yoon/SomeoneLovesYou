@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         if(setting.getBoolean("chk_auto",false)){
             editText_phone.setText(setting.getString("ID",""));
             getEditText_phone_pw.setText(setting.getString("PW", ""));
-            chk_auto.setChecked(true);
+            chk_auto.setChecked(false);
             Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(MainIntent);
 
@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     else if(ID.equals("01022345690")&&PW.equals("ah4023")){
                         editor.putString("ID",ID);
                         editor.putString("PW",PW);
-                        editor.putBoolean("chk_auto",true);
+                        editor.putBoolean("chk_auto",false);
                         editor.commit();
                         Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
                         MainIntent.putExtra("id","01022345690");
@@ -90,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                     else if(ID.equals("01050345566")&&PW.equals("bk1243")){
                         editor.putString("ID",ID);
                         editor.putString("PW",PW);
-                        editor.putBoolean("chk_auto",true);
+                        editor.putBoolean("chk_auto",false);
                         editor.commit();
                         Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
                         MainIntent.putExtra("id","01050345566");
@@ -114,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                     else if(ID.equals("01022345690")&&PW.equals("ah4023")){
                         editor.putString("ID",ID);
                         editor.putString("PW",PW);
-                        editor.putBoolean("chk_auto",true);
+                        editor.putBoolean("chk_auto",false);
                         editor.commit();
                         Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
                         MainIntent.putExtra("id","01022345690");
@@ -123,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                     else if(ID.equals("01050345566")&&PW.equals("bk1243")){
                         editor.putString("ID",ID);
                         editor.putString("PW",PW);
-                        editor.putBoolean("chk_auto",true);
+                        editor.putBoolean("chk_auto",false);
                         editor.commit();
                         Intent MainIntent = new Intent(getApplicationContext(), MainActivity.class);
                         MainIntent.putExtra("id","01050345566");

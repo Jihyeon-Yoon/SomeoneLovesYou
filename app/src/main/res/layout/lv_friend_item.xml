@@ -39,7 +39,7 @@
                 android:layout_gravity="center"
                 />
 
-            <ImageButton
+            <ImageView
 
                 android:id="@+id/iv_emoticon"
                 android:layout_width="0dp"
@@ -50,7 +50,7 @@
                 android:scaleType="fitStart"
                 android:src="@drawable/emoticon_silent">
 
-            </ImageButton>
+            </ImageView>
 
             <ImageButton
 
