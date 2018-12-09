@@ -149,7 +149,7 @@ public class PopupActivity extends FragmentActivity {
                 }
 
                 setSharedPreferncesUserInfo();
-                Log.d("profile7", "성공"+emotion);
+                Log.d("profile7", "성공"+emotion+userEmotion);
 
 
                 sh_Pref = getSharedPreferences("userInfo", MODE_PRIVATE);
@@ -173,13 +173,7 @@ public class PopupActivity extends FragmentActivity {
                     //userName.setText(stringTemp);
                 }
 
- /*               sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);
-                if(sh_Pref != null && sh_Pref.contains("userState")){
-                    state = sh_Pref.getString("userState", "nonstate");
-                    result = sh_Pref.getString("userEmotion", "noemotion");
-                    Log.d("profile2", "성공"+userState);
-                    Log.d("profile3", "성공"+result);
-                }*/
+
              /*   if(result.equals("행복")){
                     iv_emoticon.setImageResource(R.drawable.emoticon_happy);
                 }else if(result.equals("불안")){
@@ -194,7 +188,19 @@ public class PopupActivity extends FragmentActivity {
 
             }
         });
+          /*      context = getApplicationContext();
+                       sh_Pref = context.getSharedPreferences("userInfo", MODE_PRIVATE);
+                if(sh_Pref != null && sh_Pref.contains("userState")){
+                    state = sh_Pref.getString("userID", "nonstate");
+                    result = sh_Pref.getString("userEmotion", "noemotion");
+                    Log.d("profile2", "성공"+userState);
+                    Log.d("profile3", "성공"+result);
+                }
 
+        Intent MainIntent2 = new Intent(getApplicationContext(), MainActivity.class);
+        MainIntent2.putExtra("emotion",result);
+        MainIntent2.putExtra("id",state);
+        startActivity(MainIntent2);*/
 
 
     }

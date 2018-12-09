@@ -107,7 +107,9 @@ public class MainActivity extends AppCompatActivity
         navigation.setOnNavigationItemSelectedListener(this);
 
         Intent intent=getIntent();
+
         String id=intent.getStringExtra("id");
+       // id="01022345690";
         Log.d("테스트", id);
 
 
