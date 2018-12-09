@@ -143,7 +143,7 @@ public class Music extends Fragment {
             }
 
             //서버에 감정 업데이트되면 올릴것
-            is  = getResources().openRawResource(R.raw.music_e3);
+          //  is  = getResources().openRawResource(R.raw.music_e3);
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
             String[] temp = new String[3];
@@ -175,7 +175,7 @@ public class Music extends Fragment {
             userEmotion.setText("행복");
 
         } else if(userEmotionString.equals("불안")) {
-            emoticon.setImageResource(R.drawable.emoticon_confused);
+            emoticon.setImageResource(R.drawable.emoticon_disapproval);
             userEmotion.setText("불안");
 
 
