@@ -108,12 +108,12 @@ public class ListViewAdapterForFriend extends BaseAdapter {
             emoticon.setImageResource(R.drawable.emoticon_happy);
         }
         else if(result.equals("불안")){
-            emoticon.setImageResource(R.drawable.emoticon_fear);
+            emoticon.setImageResource(R.drawable.emoticon_disapproval);
         }
         else if(result.equals("슬픔")){
             emoticon.setImageResource(R.drawable.emoticon_remorse);
         }else if(result.equals("평온")){
-            emoticon.setImageResource(R.drawable.emoticon_silent);
+            emoticon.setImageResource(R.drawable. emoticon_smiling);
         }
 
        /* emoticon.setFocusable(false);

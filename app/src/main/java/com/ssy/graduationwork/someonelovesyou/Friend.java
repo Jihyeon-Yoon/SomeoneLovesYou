@@ -301,11 +301,11 @@ public class Friend extends Fragment {
                 if(result.equals("행복")){
                     iv_emoticon.setImageResource(R.drawable.emoticon_happy);
                 }else if(result.equals("불안")){
-                    iv_emoticon.setImageResource(R.drawable.emoticon_fear);
-                }else if(result.equals("슬픔")){
                     iv_emoticon.setImageResource(R.drawable.emoticon_disapproval);
+                }else if(result.equals("슬픔")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_remorse);
                 }else if(result.equals("평온")){
-                    iv_emoticon.setImageResource(R.drawable.emoticon_silent);
+                    iv_emoticon.setImageResource(R.drawable.emoticon_smiling);
                 }
 
 
@@ -315,11 +315,11 @@ public class Friend extends Fragment {
                 if(result.equals("행복")){
                     iv_emoticon.setImageResource(R.drawable.emoticon_happy);
                 }else if(result.equals("불안")){
-                    iv_emoticon.setImageResource(R.drawable.emoticon_fear);
-                }else if(result.equals("슬픔")){
                     iv_emoticon.setImageResource(R.drawable.emoticon_disapproval);
+                }else if(result.equals("슬픔")){
+                    iv_emoticon.setImageResource(R.drawable.emoticon_remorse);
                 }else if(result.equals("평온")){
-                    iv_emoticon.setImageResource(R.drawable.emoticon_silent);
+                    iv_emoticon.setImageResource(R.drawable.emoticon_smiling);
                 }
                 profile.setImageResource(R.drawable.ph00000003);
             }
